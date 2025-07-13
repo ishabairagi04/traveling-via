@@ -56,7 +56,7 @@ const trips = [
   },
   {
     id: 3,
-    image: '/slide-03.webp',
+    image: '/public/IMG-20250218-WA0252.jpg',
     location: 'Meiringen',
     title: 'Isle Of Skye & The Highlands, Switzer',
     featured: true,
@@ -89,103 +89,11 @@ const arrowStyle = (side) => ({
   '&:hover': { bgcolor: '#f0f0f0' },
 });
 
-function DestinationCarousel() {
-  const [center, setCenter] = React.useState(2);
-
-  const prev = () => setCenter((c) => Math.max(0, c - 1));
-  const next = () => setCenter((c) => Math.min(cards.length - 1, c + 1));
-
-  return (
-    <Box sx={{ position: 'relative', py: 5, overflow: 'hidden', bgcolor: '#f9f9f9' }}>
-      <Typography variant="h4" align="center" fontWeight={700} gutterBottom>
-        Plan Your Perfect Journey
-      </Typography>
-      <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 6 }}>
-        Scroll to explore our top destinations picked just for you.
-      </Typography>
-
-      <IconButton onClick={prev} sx={arrowStyle('left')}>
-        <ArrowBackIosNew />
-      </IconButton>
-      <IconButton onClick={next} sx={arrowStyle('right')}>
-        <ArrowForwardIos />
-      </IconButton>
-
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'relative',
-          height: '460px',
-        }}
-      >
-        {cards.map((card, i) => {
-  const offset = i - center;
-  const isCenter = offset === 0;
-
-  return (
-    <Card
-      key={card.id}
-      onClick={() => setCenter(i)} // 👈 CLICK HANDLER
-      sx={{
-        position: 'absolute',
-        width: isCenter ? 340 : 260,
-        height: isCenter ? 460 : 400,
-        borderRadius: 3,
-        overflow: 'hidden',
-        transform: `translateX(${offset * 300}px) scale(${isCenter ? 1 : 0.8})`,
-        opacity: isCenter ? 1 : 0.5,
-        filter: isCenter ? 'none' : 'brightness(0.7)',
-        transition: 'all 0.5s ease',
-        zIndex: isCenter ? 10 : 5,
-        boxShadow: isCenter ? 12 : 4,
-        cursor: 'pointer',
-        ml: isCenter ? 0 : -20,
-        // 👈 Makes it clickable visually
-      }}
-    >
-      <CardMedia
-        component="img"
-        image={card.img}
-        alt={card.title}
-        sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      />
-      {isCenter && (
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: 0,
-            width: '100%',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
-            color: '#fff',
-            textAlign: 'center',
-            py: 2,
-            px: 2,
-          }}
-        >
-          <Typography variant="h6">{card.title}</Typography>
-          <Button
-            variant="contained"
-            sx={{ mt: 1, bgcolor: '#fff', color: '#444', textTransform: 'none' }}
-          >
-            {card.tours} Tours
-          </Button>
-        </Box>
-      )}
-    </Card>
-  );
-})}
-
-      </Box>
-    </Box>
-  );
-}
-
+// 
 export default function Destination() {
   return (
     <section>
-      <Navbar />
+    
 
       {/* Hero Section */}
       <Box
