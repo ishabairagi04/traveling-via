@@ -209,12 +209,12 @@ const Footer = () => {
           sx={{
             position: "fixed",
             bottom: 20,
-            right: 20,
+            left: 20,
             cursor: "pointer",
             zIndex: 1500,
           }}
         >
-          <Fab size="small" sx={{ bgcolor: "#facc15", color: "#000" }}>
+          <Fab size="small" sx={{ bgcolor: "#facc15", color: "#000"  }}>
             <FaArrowUp />
           </Fab>
         </Box>
