@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import './Carousel.css';
-
+import { Link } from 'react-router-dom';
 
 const destinations = [
   {
-    title: 'manali',
-    description:
-      'Mi bibendum neque egestas congue. Arcu risus quis varius quam quisque id diam.',
-    image: 'slide-02.webp',
-    tours: '1 Tour',
-      link: '/places/manali', // ✅ remove .jsx
+    title: 'Manali',
+    description: 'Nestled in the mountains of Himachal Pradesh with snow-capped peaks.',
+    image: 'manali-image.webp',
+    tours: '3 Tours',
+    link: '/places/manali',
   },
   {
     title: 'Italy Alps',
@@ -40,7 +39,6 @@ const destinations = [
     link: '/destination/swiss-mountains',
   },
 ];
-
 export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -50,6 +48,30 @@ export default function Carousel() {
 
   const next = () => {
     setActiveIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
+  };
+
+  const calculateCardPosition = (index) => {
+    let offset = index - activeIndex;
+    
+    // Handle wrapping for circular carousel
+    if (offset < -Math.floor(destinations.length / 2)) offset += destinations.length;
+    if (offset > Math.floor(destinations.length / 2)) offset -= destinations.length;
+    if (Math.abs(offset) > 2) return null;
+    
+    // Calculate scale based on position
+    let scale = 1;
+    if (Math.abs(offset) === 1) scale = 0.85;
+    if (Math.abs(offset) === 2) scale = 0.7;
+
+    return {
+      offset,
+      style: {
+        transform: `translateX(${offset * 180}px) scale(${scale})`,
+        zIndex: 10 - Math.abs(offset),
+        opacity: 1,
+        pointerEvents: offset === 0 ? 'auto' : 'none',
+      }
+    };
   };
 
   return (
@@ -64,57 +86,42 @@ export default function Carousel() {
 
         <div className="carousel-wrapper">
           {destinations.map((d, i) => {
-       let offset = i - activeIndex;
-  if (offset < -Math.floor(destinations.length / 2)) offset += destinations.length;
-  if (offset > Math.floor(destinations.length / 2)) offset -= destinations.length;
-  if (Math.abs(offset) > 2) return null; 
-  let scale = 1;
-  let xOffset = offset * 240;
-  let zIndex = 5 - Math.abs(offset);
-
-  if (Math.abs(offset) === 1) scale = 0.85;
-  if (Math.abs(offset) === 2) scale = 0.7;
-
-            const style = {
-              transform: `
-                translateX(${offset * 180}px)
-               scale(${scale})
-              `,
-              zIndex: 10 - Math.abs(offset),
-             opacity: 1,
-
-              pointerEvents: offset === 0 ? 'auto' : 'none',
-            };
+            const position = calculateCardPosition(i);
+            if (!position) return null;
 
             return (
-             <a
-    key={i}
-    href={d.link}
-    style={{ textDecoration: 'none' ,
-       position: 'absolute',
-      top: 0,
-      left: '32%',
-      
-    }}
-  >
-   <div className={`card ${offset === 0 ? 'active' : ''}`} style={style}>
-
-                <img src={d.image} alt={d.title} />
-                {offset === 0 && (
-  <div className="card-content ">
-    <h3>{d.title}</h3>
-    <p>{d.description}</p>
-    <span className="badge">{d.tours}</span>
-  </div>
-)}
-
+              <Link
+                key={i}
+                to={d.link}
+                className="carousel-link"
+                style={{ 
+                  position: 'absolute',
+                  top: 0,
+                  left: '32%',
+                }}
+              >
+                <div 
+                  className={`card ${position.offset === 0 ? 'active' : ''}`} 
+                  style={position.style}
+                >
+                  <img src={d.image} alt={d.title} />
+                  {position.offset === 0 && (
+                    <div className="card-content">
+                      <h3>{d.title}</h3>
+                      <p>{d.description}</p>
+                      <span className="badge">{d.tours}</span>
+                    </div>
+                  )}
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
 
-        <button className="nav-btn right" onClick={next}>→</button>
+
+        <button className="nav-btn right" onClick={next} aria-label="Next destination">
+          →
+        </button>
       </div>
     </div>
   );

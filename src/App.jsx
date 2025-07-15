@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
+
+
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -9,9 +11,8 @@ import About from './components/About Us/About';
 import Contact from './components/Contact/Contact';
 import Gallery from './components/Gallery/Gallery';
 import Destination from './components/Destinations/Destinations';
-
-// If DiscoverSection is needed, import it
-// import DiscoverSection from './components/DiscoverSection'; // Uncomment if used
+import ManaliBookingPage from './components/places/manali/ManaliBookingPage'; // Import the Manali booking page
+import TourBookingPage from './components/places/manali/tourmanali';
 
 export default function App() {
   return (
@@ -23,12 +24,12 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/Destination" element={<Destination />} />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/places/manali" element={<ManaliBookingPage />} />
+              <Route path="/places/manali/tour" element={<TourBookingPage />} />
         </Routes>
-    <Footer/>
+        <Footer />
       </div>
-   
     </Router>
-    
   );
 }
