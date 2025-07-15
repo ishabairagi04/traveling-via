@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
 import PackageSection from '../../ReUse-Component/PackageSection';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
+import Footer from '../../Footer/Footer';
+import Navbar from '../../Navbar/Navbar';
 
 const GoaBookingPage = () => {
   const packages = [
@@ -32,8 +34,9 @@ const GoaBookingPage = () => {
   ];
 
   return (
+    
     <div className="font-sans bg-gradient-to-br from-[#E0F7FA] to-[#FDF6EC] text-[#023047]">
-      
+      <Navbar theme="beach" />
       {/* 🌊 Hero Section */}
       <motion.div
         className="relative w-full h-[400px] overflow-hidden"
@@ -108,8 +111,9 @@ const GoaBookingPage = () => {
           viewport={{ once: true }}
         >
           <ContactInfoSection />
+          
         </motion.div>
-      </main>
+      </main>    <Footer theme="beach" />
     </div>
   );
 };

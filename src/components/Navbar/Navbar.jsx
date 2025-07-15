@@ -21,7 +21,7 @@ import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 
-const Navbar = () => {
+const Navbar = ({ theme = "default" }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [elevated, setElevated] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -32,7 +32,6 @@ const Navbar = () => {
     const handleScroll = () => {
       setElevated(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,20 +42,26 @@ const Navbar = () => {
       "temple", "tour", "guide", "things to do", "hiking", "festival", "climate",
       "local", "culture", "attractions", "stay", "trip", "hotel", "activities"
     ];
-
     const isValid = allowedKeywords.some((keyword) =>
       query.toLowerCase().includes(keyword)
     );
-
     if (!isValid) {
       setError("Only travel-related searches are allowed.");
       return;
     }
-
     setError("");
     console.log("Searching for:", query);
-    // Perform search or redirect here
     setSearchOpen(false);
+  };
+
+  // Themed Colors
+  const isBeach = theme === "beach";
+
+  const styles = {
+    background: isBeach ? "rgba(255, 255, 255, 0.4)" : "rgba(255, 255, 255, 0)",
+    text: isBeach ? "#034752" : "#000",
+    highlight: isBeach ? "#00b4d8" : "#facc15",
+    hover: isBeach ? "#0077b6" : "#facc15",
   };
 
   return (
@@ -67,10 +72,10 @@ const Navbar = () => {
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: "rgba(255, 255, 255, 0)",
+          backgroundColor: styles.background,
           backdropFilter: "blur(12px)",
           boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
-          color: "#000",
+          color: styles.text,
           px: { xs: 2, md: 6 },
           py: 1.5,
           transition: "box-shadow 0.3s ease",
@@ -78,20 +83,18 @@ const Navbar = () => {
         }}
       >
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          {/* Left Logo */}
+          {/* Logo */}
           <Box display="flex" alignItems="center" gap={1}>
             <Box sx={{ width: 250, height: 100 }}>
-  <img
-    src="/logo.png" // Update the path if your logo is in a different location
-    alt="Via Brahman Logo"
-    style={{ width: 300, height: 200, objectFit: "contain" ,marginTop:-50 }}
-  />
-</Box>
-
+              <img
+                src="/logo.png"
+                alt="Via Brahman Logo"
+                style={{ width: 300, height: 200, objectFit: "contain", marginTop: -50 }}
+              />
+            </Box>
           </Box>
 
-          {/* Center Links */}
-
+          {/* Nav Links */}
           <Stack
             direction="row"
             spacing={4}
@@ -99,41 +102,72 @@ const Navbar = () => {
           >
             {[
               { label: "Home", path: "/" },
-           { label: "Tour Packages", path: "/all-itineraries" },
-
+              { label: "Tour Packages", path: "/all-itineraries" },
               { label: "Destination", path: "/Destination" },
               { label: "Gallery", path: "/gallery" },
               { label: "About Us", path: "/about" },
               { label: "Contact Us", path: "/contact" },
             ].map((item, idx) => (
-              <Button
-                key={idx}
-                component={Link}
-                to={item.path}
-                sx={{
-                  fontWeight: item.label === "Home" ? 700 : 500,
-                  color: item.label === "Home" ? "#facc15" : "#333",
-                  textTransform: "none",
-                }}
-              >
-                {item.label}
-              </Button>
+            <Button
+  key={idx}
+  component={Link}
+  to={item.path}
+  sx={{
+    fontWeight:  700 ,
+    color:  styles.text,
+    textTransform: "none",
+    borderRadius: "8px",
+    px: 2,
+    py: 0.5,
+    transition: "all 0.2s ease",
+    "&:hover": {
+      color: styles.hover,
+      backgroundColor: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(6px)",
+    },
+  }}
+>
+  {item.label}
+</Button>
+
             ))}
           </Stack>
 
-          {/* Right Icons */}
+          {/* Right Side Icons */}
           <Stack direction="row" spacing={2} alignItems="center">
-            <IconButton onClick={() => setSearchOpen(true)}>
+            <IconButton onClick={() => setSearchOpen(true)}   sx={{
+    borderRadius: "8px",
+     color:  styles.text,
+    transition: "all 0.2s ease",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(6px)",
+    },
+  }}>
               <SearchIcon />
             </IconButton>
-            <IconButton>
+            <IconButton   sx={{
+    borderRadius: "8px",
+     color:  styles.text,
+    transition: "all 0.2s ease",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(6px)",
+    },
+  }}>
               <FavoriteIcon />
             </IconButton>
-            <Stack direction="row" alignItems="center" spacing={0.5}>
-              <PersonIcon />
+            <Stack direction="row" alignItems="center" spacing={0.5}   sx={{
+    borderRadius: "8px",
+    transition: "all 0.2s ease",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(6px)",
+    },
+  }}>
+              <PersonIcon sx={{ color: styles.text }} />
               <Typography variant="body2" fontWeight={500}>
                 <button onClick={() => setModalOpen(true)}>Login / Register</button>
-                {/* Always open with register screen first */}
                 <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} defaultToLogin={false} />
               </Typography>
             </Stack>
