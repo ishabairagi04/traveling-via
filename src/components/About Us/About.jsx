@@ -8,7 +8,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { FaPhoneAlt, FaGlobeAsia, FaMoneyCheckAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaGlobeAsia, FaMoneyCheckAlt , FaUserAlt } from "react-icons/fa";
+
 
 
 const whyChooseData = [
@@ -124,7 +125,27 @@ role: "Developer",
 image: "/team2.webp",
 },
 ];
-
+const teamMembers = [
+{
+name: "Sumit Sahu",
+role: "Founder & CEO",
+image: "/team3.jpg", // Use your actual image path
+},
+{
+name: "Pakhi",
+role: "owner",
+image: "/team1.webp",
+},
+{
+name: "Mrinmay",
+role: "Owner",
+image: "/team4.jpg",
+},
+{
+name: "Isha Bairagi",
+role: "Designer & Developer",
+image: "/team2.webp",  },
+];
 
 
 
@@ -413,9 +434,60 @@ return (
         </div>
     </section>
 
+            {/* ========= Meet the Team Section ========= */}
+            <section className="bg-white py-20 px-4">
+                <div className="max-w-7xl mx-auto text-center">
+                    <motion.h2 initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+                        viewport={{ once: true }} className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
+                        Meet the team
+                    </motion.h2>
+            
+                    <motion.p initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5,
+                        delay: 0.2 }} viewport={{ once: true }} className="text-gray-500 mb-10">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel lobortis justo
+                    </motion.p>
+            
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+                        {teamMembers.map((member, index) => (
+                        <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{
+                            duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }}
+                            className="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all group">
+                            <div className="relative w-full h-72">
+                                <img src={member.image} alt={member.name}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            
+                                {index === 2 && (
+                                <div
+                                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <a href="#" className="text-white hover:text-yellow-400 text-lg"><i
+                                            className="fab fa-facebook-f"></i></a>
+                                    <a href="#" className="text-white hover:text-yellow-400 text-lg"><i
+                                            className="fab fa-x-twitter"></i></a>
+                                    <a href="#" className="text-white hover:text-yellow-400 text-lg"><i
+                                            className="fab fa-linkedin-in"></i></a>
+                                    <a href="#" className="text-white hover:text-yellow-400 text-lg"><i
+                                            className="fab fa-instagram"></i></a>
+                                </div>
+                                )}
+                            </div>
+                            <div className="text-center px-4 py-4">
+                                <h4 className="text-md font-semibold text-gray-800">{member.name}</h4>
+                                <p className="text-sm text-gray-500 mb-3">{member.role || "Sale agent"}</p>
+                                <div className="flex justify-center gap-4 text-gray-500">
+                                    <button className="hover:text-yellow-600 transition"><i
+                                            className="fas fa-phone-alt"></i></button>
+                                    <button className="hover:text-yellow-600 transition"><i
+                                            className="fas fa-envelope"></i></button>
+                                </div>
+                            </div>
+                        </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
 
 </section>
-
 );
 };
 
