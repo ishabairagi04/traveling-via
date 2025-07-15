@@ -1,23 +1,16 @@
 import React from 'react';
 import {
-  FaStar,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaGlobe,
-  FaBed,
-  FaSnowflake,
   FaWifi,
-  FaParking,
+  FaSnowflake,
+  FaBed,
   FaUtensils,
   FaHiking,
 } from 'react-icons/fa';
 
-// import { Link } from 'react-router-dom';
 import PackageSection from '../../ReUse-Component/PackageSection';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
-
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
+import Footer from '../../Footer/Footer';
 
 const KashmirBookingPage = () => {
   const packages = [
@@ -34,7 +27,7 @@ const KashmirBookingPage = () => {
       title: 'Adventure Package',
       desc: '5 days/4 nights with trekking and skiing activities',
       price: '₹14,999',
-      img: 'https://images.unsplash.com/photo-1582719471377-de81d0f810d7',
+      img: '/manali3.jpg',
       features: [FaWifi, FaHiking, FaSnowflake, FaUtensils],
       link: '/places/kashmir/tour',
       buttonLabel: 'Book Now',
@@ -42,43 +35,55 @@ const KashmirBookingPage = () => {
   ];
 
   return (
-    <div className="mt-0 font-sans text-gray-800">
-      <div className="relative w-full h-[400px] overflow-hidden">
+    <div className="mt-0 font-sans text-[#0a2540] bg-gradient-to-b from-white via-[#d4f1f9] to-[#aee0f4]">
+      {/* ❄️ Hero Section */}
+      <div className="relative w-full h-[420px] overflow-hidden">
         <img
-          src="/slide-02.webp"
+          src="/manali3.jpg"
           alt="Beautiful Kashmir"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover brightness-[0.6]"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 flex items-end px-4 pb-8 text-white">
+        <div className="absolute inset-0 bg-[#002B36]/60 flex items-end px-4 pb-8 text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl font-bold">Kashmir, India</h1>
-            <div className="text-sm mt-1">
-              <span className="text-[#d8a34d] cursor-pointer">Home</span> / <span className="text-[#d8a34d] cursor-pointer">Places</span> / <span className="text-[#d8a34d] cursor-pointer">Kashmir</span>
+            <h1 className="text-4xl font-extrabold text-[#d9f3ff] drop-shadow-md tracking-wide">
+              ❄️ Kashmir, India
+            </h1>
+            <div className="text-sm mt-1 text-[#b4e0f0]">
+              <span className="cursor-pointer hover:underline">Home</span> /{" "}
+              <span className="cursor-pointer hover:underline">Places</span> /{" "}
+              <span className="cursor-pointer hover:underline">Kashmir</span>
             </div>
           </div>
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 mt-10">
+      {/* 🌐 Main Content */}
+      <main className="max-w-7xl mx-auto px-4 mt-12">
         <LocationOverview
           heading="Kashmir, Jammu & Kashmir"
-          description="Placeholder description: Kashmir is a scenic destination..."
+          description="Kashmir, the Crown of India, invites you with its snow-dusted pine forests, shimmering Dal Lake, and Himalayan serenity. A dream for snow lovers and nature seekers alike."
           reviews={24}
           mapProps={{
             coordinates: [34.083656, 74.797371],
             title: 'Srinagar, Kashmir',
             location: 'Kashmir',
             image: '/images/kashmir-thumbnail.jpg',
+            customMapStyle: true,
           }}
         />
 
-        <PackageSection title="Available Packages" packages={packages} />
+        {/* 🏔️ Tour Packages */}
+        <PackageSection
+          title="❄️ Snowy Packages in Kashmir"
+          packages={packages}
+        />
 
+        {/* 📞 Contact Info */}
         <ContactInfoSection />
       </main>
+      <Footer theme="kashmir"/>
     </div>
   );
 };
 
 export default KashmirBookingPage;
-

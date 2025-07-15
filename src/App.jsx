@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 
 
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+
 import Home from './components/Home/Home';
 import About from './components/About Us/About';
 import Contact from './components/Contact/Contact';
@@ -64,7 +64,7 @@ export default function App() {
 
 <Route path="/all-itineraries" element={<AllItineraries />} />
         </Routes>
-        <Footer />
+        
       </div>
     </Router>
   );

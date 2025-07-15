@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  FaStar,
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
@@ -12,11 +11,12 @@ import {
   FaUtensils,
   FaHiking
 } from 'react-icons/fa';
-
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import PackageSection from '../../ReUse-Component/PackageSection';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
+import Footer from '../../Footer/Footer';
+import Navbar from '../../Navbar/Navbar';
 
 const KeralaBookingPage = () => {
   const packages = [
@@ -24,7 +24,7 @@ const KeralaBookingPage = () => {
       title: 'Backwater Houseboat Stay',
       desc: '2 nights on a traditional houseboat in Alleppey',
       price: '₹10,499',
-      img: 'https://images.unsplash.com/photo-1600359735486-80c95f38f66b',
+      img: '/kerala1.jpg',
       features: [FaWifi, FaUtensils, FaBed, FaSnowflake],
       link: '/places/kerala/tour',
       buttonLabel: 'View Tour',
@@ -33,59 +33,100 @@ const KeralaBookingPage = () => {
       title: 'Munnar Tea Hills Retreat',
       desc: '4 days/3 nights stay with guided plantation walks',
       price: '₹13,999',
-      img: 'https://images.unsplash.com/photo-1562322140-537defb7c39f',
+      img: '/kerala2.jpg',
       features: [FaHiking, FaSnowflake, FaWifi, FaUtensils],
       link: '/places/kerala/tour',
       buttonLabel: 'Book Now',
     }
   ];
 
-  const contactInfo = [
-    { icon: FaMapMarkerAlt, title: 'Address', value: '123 Backwater Lane, Alleppey, Kerala 688001' },
-    { icon: FaPhone, title: 'Phone', value: '+91 90234 56789' },
-    { icon: FaEnvelope, title: 'Email', value: 'info@keralatours.com' },
-    { icon: FaGlobe, title: 'Website', value: 'www.keralatours.com' }
-  ];
-
   return (
-    <div className="mt-0 font-sans text-gray-800">
-      {/* Hero Section */}
-      <div className="relative w-full h-[400px] overflow-hidden">
+    <div className="font-sans bg-gradient-to-b from-[#e6f4e6] via-[#d1e9d1] to-[#c2dec2] text-[#1a3c2e]">
+      <Navbar theme="kerala" />
+
+      {/* 🌴 Hero Section */}
+      <motion.div
+        className="relative w-full h-[400px] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <img
-          src="/images/kerala-hero.jpg" // Replace with your actual image
+          src="/kerala1.jpg"
           alt="Beautiful Kerala"
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 flex items-end px-4 pb-8 text-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1f3d2ecc] to-transparent flex items-end px-6 pb-10 text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl font-bold">Kerala, India</h1>
-            <div className="text-sm mt-1 text-[#d8a34d]">
-              <span className="cursor-pointer">Home</span> / <span className="cursor-pointer">Places</span> / <span className="cursor-pointer">Kerala</span>
-            </div>
+            <motion.h1
+              className="text-5xl font-extrabold drop-shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              Kerala, India
+            </motion.h1>
+            <motion.div
+              className="text-sm mt-2 text-yellow-300 font-semibold"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <span className="cursor-pointer hover:underline">Home</span> /{' '}
+              <span className="cursor-pointer hover:underline">Places</span> /{' '}
+              <span className="cursor-pointer hover:underline">Kerala</span>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 mt-10">
-        <LocationOverview
-          heading="Kerala, God's Own Country"
-          description="Kerala offers tranquil backwaters, lush greenery, and peaceful beaches. Explore Alleppey's houseboats, Munnar's tea plantations, and vibrant Kathakali performances. A perfect blend of culture, nature, and relaxation."
-          reviews={30}
-          mapProps={{
-            coordinates: [9.4981, 76.3388],
-            title: 'Alleppey, Kerala',
-            location: 'Kerala',
-            image: '/images/kerala-thumbnail.jpg',
-          }}
-        />
+      {/* 🌴 Main Content */}
+      <main className="max-w-7xl mx-auto px-4 mt-12 space-y-12">
+        {/* Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <LocationOverview
+            heading="Kerala, God's Own Country"
+            description="Kerala offers tranquil backwaters, lush greenery, and peaceful beaches. Explore Alleppey's houseboats, Munnar's tea plantations, and vibrant Kathakali performances. A perfect blend of culture, nature, and relaxation."
+            reviews={30}
+            mapProps={{
+              coordinates: [9.4981, 76.3388],
+              title: 'Alleppey, Kerala',
+              location: 'Kerala',
+              image: '/images/kerala-thumbnail.jpg',
+              customMapStyle: true,
+            }}
+          />
+        </motion.div>
 
-        <PackageSection title="Available Packages" packages={packages} />
-        <ContactInfoSection/>
+        {/* Packages */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <PackageSection title="🌿 Available Packages" packages={packages} />
+        </motion.div>
+
+        {/* Contact */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <ContactInfoSection />
+        </motion.div>
       </main>
+
+      <Footer theme="kerala" />
     </div>
   );
 };
 
 export default KeralaBookingPage;
-
