@@ -99,7 +99,8 @@ const Navbar = () => {
           >
             {[
               { label: "Home", path: "/" },
-              { label: "Tour Packages", path: "/tours" },
+           { label: "Tour Packages", path: "/all-itineraries" },
+
               { label: "Destination", path: "/Destination" },
               { label: "Gallery", path: "/gallery" },
               { label: "About Us", path: "/about" },

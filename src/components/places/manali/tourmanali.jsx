@@ -18,13 +18,13 @@ import {
   Divider,
 } from "@mui/material";
 
-import TourMap from "../../map/page";
-import FaqSection from "../../Faq/page";
+import TourMap from "../../ReUse-Component/maps";
+import FaqSection from "../../ReUse-Component/FaQ";
 import CustomerReviews from "../../ReUse-Component/CustomerReviews";
 import TourSuggestionCard from "../../ReUse-Component/ToursCard";
 import MediaGallery from "../../ReUse-Component/MediaGallery";
 import ItinerarySection from "../../ReUse-Component/ItinerarySection";
-import CalendarPriceSection from "./CalendarPriceSection";
+import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 
@@ -55,23 +55,12 @@ const suggestedTours = [
 const recommendedTours = [...suggestedTours]; // Use same data for demo
 
 const manaliMedia = [
-  { type: "image", src: "/About_1.avif" },
-  { type: "image", src: "/about_2.webp" },
-  { type: "image", src: "/about_3.webp" },
-  { type: "image", src: "/about_4.webp" },
-  { type: "image", src: "/bookingcontact-2.webp" },
-  { type: "image", src: "/bookingcontact1.webp" },
-  { type: "image", src: "/desert.jpg" },
-  { type: "image", src: "/img-01.webp" },
-  { type: "image", src: "/img-02.webp" },
-  { type: "image", src: "/img-03.webp" },
-  { type: "image", src: "/IMG-20250218-WA0252.jpg" },
-  { type: "image", src: "/login-1.webp" },
-  { type: "image", src: "/logo.png" },
-  { type: "image", src: "/register-1.webp" },
-  { type: "image", src: "/slide-02.webp" },
-  { type: "image", src: "/slide-03.webp" },
-  { type: "image", src: "/vite.svg" },
+  { type: "image", src: "/public/manali.jpg" },
+  { type: "image", src: "/manali2.jpg" },
+  { type: "image", src: "/manali3.jpg" },
+  { type: "image", src: "/manali.jpg" },
+  { type: "image", src: "/manali1.jpg" },
+
 ];
 
 const itinerary = [
