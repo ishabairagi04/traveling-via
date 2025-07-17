@@ -16,14 +16,14 @@ import GoaBookingPage from './components/places/goa/GoaBookingPage';
 import KashmirBookingPage from './components/places/kashmir/KashmirBookingPage';
 import AssamBookingPage from './components/places/assam/AssamBookingPage';
 import KeralaBookingPage from './components/places/kerala/KeralaBookingPage';
-import DarjeelingBookingPage from './components/places/darzeeling/DarjeelingBookingPage';
+import DarjeelingBookingPage from './components/places/darjeeling/DarjeelingBookingPage';
 import UjjainBookingPage from './components/places/ujjain/UjjainBookingPage';
 import MaldivesBookingPage from './components/places/maldives/MaldivesBookingPage';
 //Itinerary===================
 import TourBookingPage from './components/places/manali/tourmanali';
 import ItineraryKashmir from './components/places/kashmir/tourKashmir';
 import ItineraryKerala from './components/places/kerala/tourKerala';
-import ItineraryDarjeeling from './components/places/darzeeling/tourDarjeeling';
+import ItineraryDarjeeling from './components/places/darjeeling/tourDarjeeling';
 import ItineraryUjjain from './components/places/ujjain/tourUjjain';
 import ItineraryMaldives from './components/places/maldives/tourMaldives';
 import ItineraryAssam from './components/places/assam/tourAssam';

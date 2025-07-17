@@ -37,60 +37,110 @@ const Footer = ({ theme = "default" }) => {
   };
 
   const isBeach = theme === "beach";
-  const isKashmir = theme === "kashmir" || theme === "snow" || theme === "glacier";
+  const isKashmir = theme === "kashmir" || theme === "snow" ;
   const isKerala = theme === "kerala";
+  const isMaldives = theme === "maldives";
+  const isManali = theme === "manali";
+  const isDarjeeling = theme === "darjeeling";
+const isAssam = theme === "assam";
 
-  const colors = {
-    background: isKashmir
-      ? "linear-gradient(to right, #e0f7fa, #b2ebf2)"
-      : isBeach
-      ? "linear-gradient(to right, #FEEBCB, #A7E6D7)"
-      : isKerala
-      ? "linear-gradient(to right, #d7f5d0, #a8e6cf)"
-      : "#000",
-    text: isKashmir
-      ? "#034752"
-      : isBeach
-      ? "#023047"
-      : isKerala
-      ? "#1B4332"
-      : "#fff",
-    subText: isKashmir
-      ? "#447371"
-      : isBeach
-      ? "#447371"
-      : isKerala
-      ? "#2d6a4f"
-      : "gray",
-    accent: isKashmir
-      ? "#00bcd4"
-      : isBeach
-      ? "#FFD166"
-      : isKerala
-      ? "#52b788"
-      : "#facc15",
-    hover: isKashmir
-      ? "#00acc1"
-      : isBeach
-      ? "#FF9472"
-      : isKerala
-      ? "#40916c"
-      : "#facc15",
-    border: isKashmir
-      ? "#90caf9"
-      : isBeach
-      ? "#93D9D4"
-      : isKerala
-      ? "#b7e4c7"
-      : "#333",
-    inputBg: isKashmir
-      ? "rgba(255,255,255,0.5)"
-      : isBeach
-      ? "rgba(255,255,255,0.6)"
-      : isKerala
-      ? "rgba(255, 255, 255, 0.7)"
-      : "#1f2937",
-  };
+const colors = {
+  background: isKashmir
+    ? "linear-gradient(to right, #e0f7fa, #b2ebf2)"
+    : isKerala
+    ? "linear-gradient(to right, #d7f5d0, #a8e6cf)"
+    : isMaldives
+    ? "linear-gradient(to right, #a1f3f7, #3ec1a2, #48cae4)"
+    : isManali
+    ? "linear-gradient(to right, #e6f0f3, #d4ebf2, #b9e0ee)"
+    : isDarjeeling
+    ? "linear-gradient(to right, #dfeeea, #cce3dd, #b5d9d2)"
+    : isAssam
+    ? "linear-gradient(to right,#A7E6D7,  #fefae0, #e1f7e7)"
+    : "linear-gradient(to right, #FEEBCB, #A7E6D7)",
+
+  text: isAssam
+    ? "#274e13"
+    : isKashmir || isManali
+    ? "#034752"
+    : isBeach
+    ? "#023047"
+    : isKerala
+    ? "#1B4332"
+    : isMaldives
+    ? "#013a63"
+    : isDarjeeling
+    ? "#30534b"
+    : "#fff",
+
+  subText: isAssam
+    ? "#5c7f66"
+    : isKashmir || isManali || isBeach
+    ? "#447371"
+    : isKerala
+    ? "#2d6a4f"
+    : isMaldives
+    ? "#468faf"
+    : isDarjeeling
+    ? "#547c71"
+    : "gray",
+
+  accent: isAssam
+    ? "#52b788"
+    : isKashmir || isManali
+    ? "#00bcd4"
+    : isBeach
+    ? "#FFD166"
+    : isKerala
+    ? "#52b788"
+    : isMaldives
+    ? "#ffd166"
+    : isDarjeeling
+    ? "#69b9a5"
+    : "#facc15",
+
+  hover: isAssam
+    ? "#fff"
+    : isKashmir || isManali
+    ? "#00acc1"
+    : isBeach
+    ? "#FF9472"
+    : isKerala
+    ? "#40916c"
+    : isMaldives
+    ? "#ffc300"
+    : isDarjeeling
+    ? "#59a193"
+    : "#facc15",
+
+  border: isAssam
+    ? "#aac8b2"
+    : isKashmir || isManali
+    ? "#90caf9"
+    : isBeach
+    ? "#93D9D4"
+    : isKerala
+    ? "#b7e4c7"
+    : isMaldives
+    ? "#89c2d9"
+    : isDarjeeling
+    ? "#aad4cb"
+    : "#333",
+
+  inputBg: isAssam
+    ? "rgba(255, 255, 255, 0.85)"
+    : isKashmir || isManali
+    ? "rgba(255,255,255,0.5)"
+    : isBeach
+    ? "rgba(255,255,255,0.6)"
+    : isKerala
+    ? "rgba(255, 255, 255, 0.7)"
+    : isMaldives
+    ? "rgba(255, 255, 255, 0.75)"
+    : isDarjeeling
+    ? "rgba(255, 255, 255, 0.6)"
+    : "#1f2937",
+};
 
   return (
     <>
@@ -121,7 +171,32 @@ const Footer = ({ theme = "default" }) => {
                   <stop offset="0%" stopColor="#d7f5d0" />
                   <stop offset="100%" stopColor="#a8e6cf" />
                 </>
-              ) : (
+              ) : isMaldives ? (
+                <>
+                  <stop offset="0%" stopColor="#a1f3f7" />
+                  <stop offset="50%" stopColor="#3ec1a2" />
+                  <stop offset="100%" stopColor="#48cae4" />
+                </>
+              ) : isManali ? (
+                <>
+                  <stop offset="0%" stopColor="#e6f0f3" />
+                  <stop offset="50%" stopColor="#d4ebf2" />
+                  <stop offset="100%" stopColor="#b9e0ee" />
+                </>
+              ) : isDarjeeling ? (
+                <>
+                  <stop offset="0%" stopColor="#dfeeea" />
+                  <stop offset="50%" stopColor="#cce3dd" />
+                  <stop offset="100%" stopColor="#b5d9d2" />
+                </>
+              ) :isAssam? (
+                <>
+                   <stop offset="0%" stopColor="#A7E6D7" />
+                      <stop offset="50%" stopColor="#fefae0" />
+                  <stop offset="100%" stopColor="#e1f7e7" />
+               
+                </>
+              ) :(
                 <>
                   <stop offset="0%" stopColor="#FEEBCB" />
                   <stop offset="100%" stopColor="#A7E6D7" />
@@ -158,22 +233,23 @@ const Footer = ({ theme = "default" }) => {
             {/* Contact Section */}
             <Box flex={1} minWidth="280px">
               <Stack direction="row" alignItems="center" spacing={2} mb={1}>
-                <Box
-                  sx={{
-                    backgroundColor: colors.accent,
-                    width: 40,
-                    height: 40,
-                    borderRadius: 1,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "bold",
-                    fontSize: 20,
-                    color: colors.text,
-                  }}
-                >
-                  {isKashmir ? "🏔️" : isKerala ? "🌿" : "✈️"}
-                </Box>
+              <Box
+  sx={{
+    backgroundColor: isAssam? "#fff":colors.accent,
+    width: 40,
+    height: 40,
+    borderRadius: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+    color: isAssam || isKerala || isDarjeeling  || isAssam? "#fff" : "#1b1b1b",
+  }}
+>
+  {isKashmir ? "🏔️" : isKerala ? "🌿" : isDarjeeling ? "🌄" : isAssam ? "🍃" : "✈️"}
+</Box>
+
                 <Box>
                   <Typography variant="h6" fontWeight="bold">
                     Via Brahman
@@ -223,9 +299,25 @@ const Footer = ({ theme = "default" }) => {
                 size="small"
                 InputProps={{
                   endAdornment: (
-                    <IconButton edge="end" sx={{ color: colors.accent }}>
-                      <FiArrowRight />
-                    </IconButton>
+                <Box
+  sx={{
+    backgroundColor:colors.accent,
+    p: 1,
+    size:"small",
+    borderRadius: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color:"#fff",
+    "&:hover": {
+      backgroundColor: isAssam? "#fff": colors.hover,
+      color:isAssam? "#52b788": "#fff"
+    },
+  }}
+>
+  <FiArrowRight />
+</Box>
+
                   ),
                 }}
                 sx={{
@@ -279,10 +371,23 @@ const Footer = ({ theme = "default" }) => {
               left: 20,
               cursor: "pointer",
               zIndex: 1500,
+              
             }}
           >
-            <Fab size="small" sx={{ bgcolor: colors.accent, color: colors.text }}>
-              <FaArrowUp />
+            <Fab
+  size="small"
+  sx={{
+    bgcolor: colors.accent,
+    color: "#fff",
+    "&:hover": {
+      bgcolor: colors.hover,
+         color:isAssam? "#52b788": "#fff"
+    },
+  }}
+>
+  <FaArrowUp />
+
+
             </Fab>
           </Box>
         </Zoom>

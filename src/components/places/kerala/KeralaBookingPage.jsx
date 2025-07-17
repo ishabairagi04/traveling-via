@@ -41,7 +41,7 @@ const KeralaBookingPage = () => {
   ];
 
   return (
-    <div className="font-sans bg-gradient-to-b from-[#e6f4e6] via-[#d1e9d1] to-[#c2dec2] text-[#1a3c2e]">
+    <div className=" pt-25 font-sans bg-gradient-to-b from-[#e6f4e6] via-[#d1e9d1] to-[#c2dec2] text-[#1a3c2e]">
       <Navbar theme="kerala" />
 
       {/* 🌴 Hero Section */}
