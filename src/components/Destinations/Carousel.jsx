@@ -24,6 +24,13 @@ const destinations = [
     tours: '3 Tours',
     link: '/places/kerala',
   },
+    {
+    title: 'darjeeling',
+    description: 'Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus.',
+    image: '/kerala1.jpg',
+    tours: '3 Tours',
+    link: '/places/darjeeling',
+  },
   {
     title: 'assam',
     description: 'Convallis a cras semper auctor neque vitae tempus quam pellentesque.',

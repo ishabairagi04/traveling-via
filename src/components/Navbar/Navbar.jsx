@@ -54,15 +54,78 @@ const Navbar = ({ theme = "default" }) => {
     setSearchOpen(false);
   };
 
-  // Themed Colors
   const isBeach = theme === "beach";
+  const isKashmir = theme === "kashmir" || theme === "snow" || theme === "manali";
+  const isKerala = theme === "kerala";
+  const isMaldives = theme === "maldives";
+const isDarjeeling = theme === "darjeeling";
+  const isManali = theme === "manali";
+const isAssam = theme === "assam";
+const styles = {
+  background: isAssam
+    ? "rgba(255, 255, 255, 0.6)"
+    : isDarjeeling
+    ? "#c3e3dd"
+    : isManali
+    ? "rgba(230, 247, 255, 0.6)"
+    : isKashmir
+    ? "rgba(224, 247, 250, 0.5)"
+    : isBeach
+    ? "rgba(255, 255, 255, 0.4)"
+    : isMaldives
+    ? "rgba(229, 252, 255, 0.6)"
+    : isKerala
+    ? "rgba(215, 245, 208, 0.5)"
+    : "rgba(255, 255, 255, 0.2)",
 
-  const styles = {
-    background: isBeach ? "rgba(255, 255, 255, 0.4)" : "rgba(255, 255, 255, 0)",
-    text: isBeach ? "#034752" : "#000",
-    highlight: isBeach ? "#00b4d8" : "#facc15",
-    hover: isBeach ? "#0077b6" : "#facc15",
-  };
+  text: isAssam
+    ? "#274e13"
+    : isDarjeeling
+    ? "#2b5f55"
+    : isManali
+    ? "#013a63"
+    : isKashmir
+    ? "#034752"
+    : isBeach
+    ? "#006d77"
+    : isMaldives
+    ? "#007f7f"
+    : isKerala
+    ? "#1B4332"
+    : "#000",
+
+  highlight: isAssam
+    ? "#52b788"
+    : isDarjeeling
+    ? "#357f6b"
+    : isManali
+    ? "#90e0ef"
+    : isKashmir
+    ? "#00acc1"
+    : isBeach
+    ? "#00b4d8"
+    : isMaldives
+    ? "#5eead4"
+    : isKerala
+    ? "#52b788"
+    : "#facc15",
+
+  hover: isAssam
+    ? "#52b788"
+    : isDarjeeling
+    ? "#357f6b"
+    : isManali
+    ? "#00b4d8"
+    : isKashmir
+    ? "#00bcd4"
+    : isBeach
+    ? "#0077b6"
+    : isMaldives
+    ? "#38bdf8"
+    : isKerala
+    ? "#40916c"
+    : "#facc15",
+};
 
   return (
     <>
@@ -108,63 +171,72 @@ const Navbar = ({ theme = "default" }) => {
               { label: "About Us", path: "/about" },
               { label: "Contact Us", path: "/contact" },
             ].map((item, idx) => (
-            <Button
-  key={idx}
-  component={Link}
-  to={item.path}
-  sx={{
-    fontWeight:  700 ,
-    color:  styles.text,
-    textTransform: "none",
-    borderRadius: "8px",
-    px: 2,
-    py: 0.5,
-    transition: "all 0.2s ease",
-    "&:hover": {
-      color: styles.hover,
-      backgroundColor: "rgba(255, 255, 255, 0.4)",
-      backdropFilter: "blur(6px)",
-    },
-  }}
->
-  {item.label}
-</Button>
-
+              <Button
+                key={idx}
+                component={Link}
+                to={item.path}
+                sx={{
+                  fontWeight: 700,
+                  color: styles.text,
+                  textTransform: "none",
+                  borderRadius: "8px",
+                  px: 2,
+                  py: 0.5,
+                  transition: "all 0.2s ease",
+                  "&:hover": {
+                    color: styles.hover,
+                    backgroundColor: "rgba(255, 255, 255, 0.4)",
+                    backdropFilter: "blur(6px)",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
             ))}
           </Stack>
 
           {/* Right Side Icons */}
           <Stack direction="row" spacing={2} alignItems="center">
-            <IconButton onClick={() => setSearchOpen(true)}   sx={{
-    borderRadius: "8px",
-     color:  styles.text,
-    transition: "all 0.2s ease",
-    "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.4)",
-      backdropFilter: "blur(6px)",
-    },
-  }}>
+            <IconButton
+              onClick={() => setSearchOpen(true)}
+              sx={{
+                borderRadius: "8px",
+                color: styles.text,
+                transition: "all 0.2s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.4)",
+                  backdropFilter: "blur(6px)",
+                },
+              }}
+            >
               <SearchIcon />
             </IconButton>
-            <IconButton   sx={{
-    borderRadius: "8px",
-     color:  styles.text,
-    transition: "all 0.2s ease",
-    "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.4)",
-      backdropFilter: "blur(6px)",
-    },
-  }}>
+            <IconButton
+              sx={{
+                borderRadius: "8px",
+                color: styles.text,
+                transition: "all 0.2s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.4)",
+                  backdropFilter: "blur(6px)",
+                },
+              }}
+            >
               <FavoriteIcon />
             </IconButton>
-            <Stack direction="row" alignItems="center" spacing={0.5}   sx={{
-    borderRadius: "8px",
-    transition: "all 0.2s ease",
-    "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.4)",
-      backdropFilter: "blur(6px)",
-    },
-  }}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={0.5}
+              sx={{
+                borderRadius: "8px",
+                transition: "all 0.2s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.4)",
+                  backdropFilter: "blur(6px)",
+                },
+              }}
+            >
               <PersonIcon sx={{ color: styles.text }} />
               <Typography variant="body2" fontWeight={500}>
                 <button onClick={() => setModalOpen(true)}>Login / Register</button>

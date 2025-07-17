@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  FaStar,
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
@@ -12,11 +11,13 @@ import {
   FaUtensils,
   FaHiking
 } from 'react-icons/fa';
-
+import { motion } from 'framer-motion';
 
 import PackageSection from '../../ReUse-Component/PackageSection';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 const MaldivesBookingPage = () => {
   const packages = [
@@ -48,41 +49,90 @@ const MaldivesBookingPage = () => {
   ];
 
   return (
-    <div className="mt-0 font-sans text-gray-800">
-      {/* Hero Section */}
-      <div className="relative w-full h-[400px] overflow-hidden">
+    <div className=" pt-25 font-sans text-[#005c5c] bg-gradient-to-b from-[#e5fcff] to-[#c4f1eb]">
+      <Navbar theme="maldives" />
+
+      {/* 🌊 Hero Section */}
+      <motion.div
+        className="relative w-full h-[400px] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <img
-          src="/maldives.jpg" // Replace with your own image
+          src="/maldives.jpg"
           alt="Maldives Beach"
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 flex items-end px-4 pb-8 text-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#007f7fcc] to-transparent flex items-end px-6 pb-10 text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl font-bold">Maldives</h1>
-            <div className="text-sm mt-1 text-[#d8a34d]">
-              <span className="cursor-pointer">Home</span> / <span className="cursor-pointer">Places</span> / <span className="cursor-pointer">Maldives</span>
-            </div>
+            <motion.h1
+              className="text-5xl font-extrabold drop-shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              Maldives
+            </motion.h1>
+            <motion.div
+              className="text-sm mt-2 text-[#f6d76e] font-semibold"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <span className="cursor-pointer hover:underline">Home</span> /{' '}
+              <span className="cursor-pointer hover:underline">Places</span> /{' '}
+              <span className="cursor-pointer hover:underline">Maldives</span>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 mt-10">
-        <LocationOverview
-          heading="Maldives – The Island Paradise"
-          description="The Maldives, a tropical paradise in the Indian Ocean, is famous for its crystal-clear waters, coral reefs, and luxurious resorts. Ideal for honeymooners, scuba divers, and luxury seekers, it's one of the most breathtaking destinations on Earth."
-          reviews={50}
-          mapProps={{
-            coordinates: [3.2028, 73.2207],
-            title: 'Malé Atoll',
-            location: 'Maldives',
-            image: '/images/maldives-map-thumb.jpg',
-          }}
-        />
+      {/* 🌴 Main Content */}
+      <main className="max-w-7xl mx-auto px-4 mt-12 space-y-12">
+        {/* Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <LocationOverview
+            heading="Maldives – The Island Paradise"
+            description="The Maldives, a tropical paradise in the Indian Ocean, is famous for its crystal-clear waters, coral reefs, and luxurious resorts. Ideal for honeymooners, scuba divers, and luxury seekers, it's one of the most breathtaking destinations on Earth."
+            reviews={50}
+            mapProps={{
+              coordinates: [3.2028, 73.2207],
+              title: 'Malé Atoll',
+              location: 'Maldives',
+              image: '/images/maldives-map-thumb.jpg',
+              customMapStyle: true
+            }}
+          />
+        </motion.div>
 
-        <PackageSection title="Available Packages" packages={packages} />
-        <ContactInfoSection contacts={contactInfo} />
+        {/* Packages */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <PackageSection title="🌴 Available Packages" packages={packages} />
+        </motion.div>
+
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <ContactInfoSection contacts={contactInfo} />
+        </motion.div>
       </main>
+
+      <Footer theme="maldives" />
     </div>
   );
 };

@@ -35,7 +35,7 @@ const GoaBookingPage = () => {
 
   return (
     
-    <div className="font-sans bg-gradient-to-br from-[#E0F7FA] to-[#FDF6EC] text-[#023047]">
+    <div className="pt-25 font-sans bg-gradient-to-br from-[#E0F7FA] to-[#FDF6EC] text-[#023047]">
       <Navbar theme="beach" />
       {/* 🌊 Hero Section */}
       <motion.div

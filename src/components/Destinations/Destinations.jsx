@@ -8,11 +8,9 @@ import { motion } from 'framer-motion';
 import {
   Box,
   Typography,
-  Grid,
   Card,
   CardMedia,
   Container,
-  CardContent,
   IconButton,
   Chip,
   Stack,
@@ -23,9 +21,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PeopleIcon from '@mui/icons-material/People';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import TravelCarousel from './Carousel';
-
-import TravelInfoSection from './bookingsContact'
-
+import TravelInfoSection from './bookingsContact';
 
 const trips = [
   {
@@ -69,32 +65,9 @@ const trips = [
   },
 ];
 
-const cards = [
-  { id: 1, title: 'Gyeongju', img: '/slide-03.webp', tours: 5 },
-  { id: 2, title: 'Dolomites', img: '/slide-03.webp', tours: 3 },
-  { id: 3, title: 'Lake Braies', img: '/slide-03.webp', tours: 4 },
-  { id: 4, title: 'Blue Ridge', img: '/slide-03.webp', tours: 2 },
-  { id: 5, title: 'Monument Valley', img: '/slide-03.webp', tours: 6 },
-  { id: 6, title: 'Kyoto', img: '/slide-03.webp', tours: 3 },
-];
-
-const arrowStyle = (side) => ({
-  position: 'absolute',
-  top: '50%',
-  [side]: 10,
-  transform: 'translateY(-50%)',
-  bgcolor: '#fff',
-  boxShadow: 3,
-  zIndex: 20,
-  '&:hover': { bgcolor: '#f0f0f0' },
-});
-
-// 
 export default function Destination() {
   return (
     <section>
-    
-
       {/* Hero Section */}
       <Box
         sx={{
@@ -138,7 +111,7 @@ export default function Destination() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
-            sx={{ mb: 2 }}
+            sx={{ mb: 2, fontSize: { xs: '2rem', md: '3rem' } }}
           >
             Discover the World
           </Typography>
@@ -149,7 +122,7 @@ export default function Destination() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            sx={{ mb: 4 }}
+            sx={{ mb: 4, px: { xs: 2, md: 0 } }}
           >
             Find your next adventure among our hand-picked destinations.
           </Typography>
@@ -168,7 +141,13 @@ export default function Destination() {
 
       {/* Frame 1 Section */}
       <Box sx={{ py: 10, px: { xs: 2, md: 8 }, bgcolor: '#fff' }}>
-        <Typography variant="h4" align="center" fontWeight={700} gutterBottom>
+        <Typography
+          variant="h4"
+          align="center"
+          fontWeight={700}
+          gutterBottom
+          sx={{ fontSize: { xs: '1.8rem', md: '2.5rem' } }}
+        >
           Explore our exclusive, otherworldly retreats
         </Typography>
         <Typography
@@ -185,7 +164,7 @@ export default function Destination() {
             overflowX: 'auto',
             gap: 3,
             px: 1,
-            ml: 25,
+         ml:{lg:20,sm:0},
             '&::-webkit-scrollbar': { display: 'none' },
           }}
         >
@@ -194,7 +173,7 @@ export default function Destination() {
               key={trip.id}
               sx={{
                 position: 'relative',
-                minWidth: 320,
+                minWidth: { xs: 260, sm: 300, md: 320 },
                 maxWidth: 320,
                 height: 400,
                 flex: '0 0 auto',
@@ -207,7 +186,7 @@ export default function Destination() {
                 component="img"
                 image={trip.image}
                 alt={trip.title}
-                sx={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                sx={{ height: '100%', width: '100%', objectFit: 'cover' , }}
               />
               <Box
                 sx={{
@@ -224,7 +203,7 @@ export default function Destination() {
                   color: 'white',
                 }}
               >
-                <Box sx={{ position: 'absolute', top: 12, left: 12, display: 'flex', gap: 1 }}>
+                <Box sx={{ position: 'absolute', top: 12,right:12, display: 'flex', gap: 1 }}>
                   {trip.featured && <Chip label="Featured" color="warning" size="small" />}
                   <Chip label={`🖼 ${trip.mediaCount}`} size="small" />
                   {trip.isVideo && <Chip label="🎥" size="small" />}
@@ -270,9 +249,9 @@ export default function Destination() {
         </Box>
       </Box>
 
-      {/* Frame 2 Carousel */}
-     <TravelCarousel />
-     <TravelInfoSection/>
+      {/* Carousel and Info */}
+      <TravelCarousel />
+      <TravelInfoSection />
     </section>
   );
 }

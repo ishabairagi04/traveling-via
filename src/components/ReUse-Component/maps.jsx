@@ -38,7 +38,8 @@ export default function TourMap({
   location = [],
   coordinates = [],
   imageUrl = '',
-  zoom = 8
+  zoom = 8,
+  position = [],
 }) {
   return (
     <Box mt={6}>

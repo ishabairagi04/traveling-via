@@ -13,10 +13,11 @@ import {
   FaHiking
 } from 'react-icons/fa';
 
-// import { Link } from 'react-router-dom';
 import PackageSection from '../../ReUse-Component/PackageSection';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
+import Footer from '../../Footer/Footer';
+import Navbar from '../../Navbar/Navbar';
 
 const AssamBookingPage = () => {
   const packages = [
@@ -47,20 +48,22 @@ const AssamBookingPage = () => {
     { icon: FaGlobe, title: 'Website', value: 'www.assamtours.com' }
   ];
 
-  return (
-    <div className="mt-0 font-sans text-gray-800">
+  return (<>
+   <Navbar theme='assam'/>
+    <div className="pt-25 font-sans text-gray-800 bg-[#eaf1e5]">
+     
       {/* Hero Section */}
       <div className="relative w-full h-[400px] overflow-hidden">
         <img
-          src="/assam1.jpg" // Replace with actual
+          src="/assam1.jpg"
           alt="Beautiful Assam"
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 flex items-end px-4 pb-8 text-white">
+        <div className="absolute top-0 left-0 w-full h-full bg-[#1e3d59]/60 flex items-end px-4 pb-8 text-white">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl font-bold">Assam, India</h1>
             <div className="text-sm mt-1 text-[#d8a34d]">
-              <span className="cursor-pointer">Home</span> / <span className="cursor-pointer">Places</span> / <span className="cursor-pointer">Assam</span>
+              <span className="cursor-pointer hover:underline">Home</span> / <span className="cursor-pointer hover:underline">Places</span> / <span className="cursor-pointer hover:underline">Assam</span>
             </div>
           </div>
         </div>
@@ -80,13 +83,13 @@ const AssamBookingPage = () => {
           }}
         />
 
-        <PackageSection title="Available Packages" packages={packages} />
+        <PackageSection title="Available Packages" packages={packages} highlightColor="#d8a34d" />
 
         <ContactInfoSection contacts={contactInfo} />
       </main>
-    </div>
+      <Footer theme='assam'/>
+    </div></>
   );
 };
 
 export default AssamBookingPage;
-

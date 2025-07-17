@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const PackageSection = ({ title = "Available Packages", packages = [], linkTo = "#" }) => {
   return (
@@ -19,9 +20,9 @@ const PackageSection = ({ title = "Available Packages", packages = [], linkTo = 
             <h3 className="text-xl font-semibold mb-1">{pkg.title}</h3>
             <p className="text-gray-600">{pkg.desc}</p>
             <div className="flex flex-wrap gap-3 mt-3">
-              {pkg.features.map((Icon, idx) => (
+              {pkg.features.map((feature, idx) => (
                 <span key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                  <Icon />
+                  <FaCheckCircle className="text-green-500" /> {feature}
                 </span>
               ))}
             </div>
