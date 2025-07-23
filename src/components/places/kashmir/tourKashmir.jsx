@@ -4,12 +4,12 @@ import {
   Box,
   Typography,
   Breadcrumbs,
-
   Grid,
   Divider,
 } from "@mui/material";
 import { Star, Place } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+
 import TourMap from "../../ReUse-Component/maps";
 import FaqSection from "../../ReUse-Component/FaQ";
 import CustomerReviews from "../../ReUse-Component/CustomerReviews";
@@ -19,6 +19,8 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+
+import destinationThemes from "../../ReUse-Component/theme"; // ✅ Make sure path is correct
 
 const kashmirTour = {
   title: "Scenic Kashmir Getaway",
@@ -69,32 +71,47 @@ const itinerary = [
 
 const ItineraryKashmir = () => {
   const selectedTour = kashmirTour;
+  const theme = destinationThemes.kashmir; // ✅ Apply Kashmir theme
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{background: 'linear-gradient(to bottom, white, #d4f1f9, #aee0f4)', minHeight: "100vh", py: 4, mt: 20 }}>
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
-        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
-          <Link color="inherit" href="#" underline="hover">Home</Link>
-          <Link color="inherit" href="#" underline="hover">Search Result</Link>
-          <Typography color="text.primary">{selectedTour.title}</Typography>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem", color: theme.text }}>
+          <Link style={{ color: theme.text }} to="/">Home</Link>
+          <Link style={{ color: theme.text }} to="/search">Search Result</Link>
+          <Typography color={theme.text}>{selectedTour.title}</Typography>
         </Breadcrumbs>
 
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: "#212529", mb: 1 }}>
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{
+              fontWeight: 700,
+              fontSize: "2rem",
+              color: theme.text,
+              mb: 1,
+            }}
+          >
             {selectedTour.title}
           </Typography>
+
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Star sx={{ color: "#ffc107", mr: 0.5, fontSize: "1rem" }} />
-              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>{selectedTour.rating}</Typography>
-              <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: "#6c757d" }}>
+              <Star sx={{ color: theme.highlight, mr: 0.5, fontSize: "1rem" }} />
+              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem", color: theme.text }}>
+                {selectedTour.rating}
+              </Typography>
+              <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: theme.text }}>
                 ({selectedTour.reviewCount} reviews)
               </Typography>
             </Box>
-            <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: "#dee2e6" }} />
+
+            <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: theme.highlight }} />
+
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Place sx={{ color: "#0d6efd", fontSize: "1rem", mr: 0.5 }} />
-              <Typography sx={{ fontSize: "0.875rem", color: "#6c757d" }}>
+              <Place sx={{ color: theme.highlight, fontSize: "1rem", mr: 0.5 }} />
+              <Typography sx={{ fontSize: "0.875rem", color: theme.text }}>
                 {selectedTour.location}
               </Typography>
             </Box>
@@ -146,7 +163,7 @@ const ItineraryKashmir = () => {
         </Box>
 
         <Box mt={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography variant="h6" fontWeight="bold" mb={2} sx={{ color: theme.text }}>
             You may like
           </Typography>
           <Grid container spacing={2}>

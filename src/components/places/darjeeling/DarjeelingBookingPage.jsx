@@ -155,7 +155,7 @@ const DarjeelingBookingPage = () => {
 />
 
 
-        <PackageSection title="Available Packages" packages={packages} />
+        <PackageSection title="Available Packages" packages={packages}  />
         <ContactInfoSection contacts={contactInfo} />
       </main>
 

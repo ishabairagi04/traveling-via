@@ -6,9 +6,11 @@ const PackageSection = ({
   title = "Available Packages",
   packages = [],
   linkTo = "#",
-  theme =[currentTheme]
+  theme,
 }) => {
-  const { accent, text } = theme.palette;
+  const accent = theme?.palette?.accent || "#1976d2";
+  const text = theme?.palette?.text || "#000";
+
 
   return (
     <div className="mb-12">
@@ -30,12 +32,13 @@ const PackageSection = ({
             <p className="text-gray-600">{pkg.desc}</p>
 
             <div className="flex flex-wrap gap-3 mt-3">
-              {pkg.features.map((FeatureIcon, idx) => (
-                <span key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                  <FaCheckCircle className="text-green-500" />
-                  <FeatureIcon />
-                </span>
-              ))}
+            {pkg.features.map((feature, idx) => (
+  <span key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+    <FaCheckCircle className="text-green-500" />
+    {typeof feature === 'string' ? feature : <feature.type {...feature.props} />}
+  </span>
+))}
+
             </div>
           </div>
 
@@ -57,14 +60,14 @@ const PackageSection = ({
   variant="contained"
   sx={{
     mt: 2,
-    backgroundColor: theme?.palette?.accent || '#1976d2', // fallback color
+    backgroundColor: theme?.palette?.accent || '#1976d2',
     color: '#fff',
     '&:hover': {
       backgroundColor: theme?.palette?.primary || '#115293',
     },
   }}
 >
-  {pkg.buttonLabel}
+  {pkg.buttonLabel || "Book Now"}
 </Button>
 
             </Link>

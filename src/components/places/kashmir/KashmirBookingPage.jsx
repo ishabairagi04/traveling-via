@@ -76,6 +76,7 @@ const KashmirBookingPage = () => {
         <PackageSection
           title="❄️ Snowy Packages in Kashmir"
           packages={packages}
+          theme="kashmir"
         />
         
 
