@@ -18,8 +18,20 @@ import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-
+ const maldivesTheme = {
+  palette: {
+    primary: '#006D77',
+    secondary: 'black',
+   accent: "#ffd166",
+    background: '#F0FFFF',
+    text: '#023047',
+  },
+};
 const MaldivesBookingPage = () => {
+
+
+const currentTheme = maldivesTheme.palette;
+
   const packages = [
     {
       title: 'Luxury Overwater Villa',
@@ -118,7 +130,8 @@ const MaldivesBookingPage = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <PackageSection title="🌴 Available Packages" packages={packages} />
+          <PackageSection title="🌴 Maldives Packages" packages={packages} theme={maldivesTheme} />
+       
         </motion.div>
 
         {/* Contact Info */}

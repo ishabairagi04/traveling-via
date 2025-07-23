@@ -77,6 +77,7 @@ const KashmirBookingPage = () => {
           title="❄️ Snowy Packages in Kashmir"
           packages={packages}
         />
+        
 
         {/* 📞 Contact Info */}
         <ContactInfoSection />

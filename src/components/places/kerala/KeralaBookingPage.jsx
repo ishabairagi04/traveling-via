@@ -17,8 +17,17 @@ import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
-
+ const keralaTheme = {
+  palette: {
+    primary: '#2E7D32',
+    secondary: '#A5D6A7',
+     accent: "#52b788",
+    background: '#F7FFF7',
+    text: '#1C1C1C',
+  },
+};
 const KeralaBookingPage = () => {
+    const currentTheme = keralaTheme.palette;
   const packages = [
     {
       title: 'Backwater Houseboat Stay',
@@ -110,7 +119,11 @@ const KeralaBookingPage = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <PackageSection title="🌿 Available Packages" packages={packages} />
+            <PackageSection
+          title="Kerala Packages"
+          packages={packages}
+          theme={keralaTheme}
+        />
         </motion.div>
 
         {/* Contact */}

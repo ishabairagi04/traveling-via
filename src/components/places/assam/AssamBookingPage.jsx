@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import {
   FaStar,
   FaMapMarkerAlt,
@@ -20,6 +21,7 @@ import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 
 const AssamBookingPage = () => {
+  
   const packages = [
     {
       title: 'Brahmaputra River Cruise',
