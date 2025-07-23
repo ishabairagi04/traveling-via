@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Carousel.css';
+import './carousel.css';
 import { Link } from 'react-router-dom';
 
 const destinations = [
