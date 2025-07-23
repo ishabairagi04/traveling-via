@@ -44,7 +44,7 @@ const Navbar = ({ theme = "default" }) => {
     ];
     const isValid = allowedKeywords.some((keyword) =>
       query.toLowerCase().includes(keyword)
-    );
+    ); 
     if (!isValid) {
       setError("Only travel-related searches are allowed.");
       return;
