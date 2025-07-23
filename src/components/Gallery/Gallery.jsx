@@ -1,101 +1,180 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import { Container, Typography, Card, CardMedia, CardContent, Button } from "@mui/material";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import {
+Box,
+Chip,
+Container,
+Dialog,
+DialogContent,
+Grid,
+TextField,
+Typography,
+} from "@mui/material";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-// Sample gallery content
-const galleryItems = [
-{ type: "image", src: "/gallery1.jpg", title: "Beach Paradise", category: "destination" },
-{ type: "image", src: "/gallery2.jpg", title: "Snowy Peaks", category: "destination" },
-{ type: "video", src: "/video1.mp4", title: "Surfing", category: "activity" },
-{ type: "image", src: "/gallery3.jpg", title: "Cultural Dance", category: "experience" },
-{ type: "video", src: "/video2.mp4", title: "Scuba Diving", category: "activity" },
-{ type: "image", src: "/gallery4.jpg", title: "Desert Safari", category: "destination" },
+const allGalleryItems = [
+{
+id: 1,
+type: "image",
+src: "/goa.jpg",
+category: "Adventure",
+},
+{
+id: 2,
+type: "video",
+src: "/video1.mp4",
+category: "Nature",
+},
+{
+id: 3,
+type: "image",
+src: "/assam1.jpg",
+category: "Culture",
+},
+{
+id: 4,
+type: "image",
+src: "/assam2.jpg",
+category: "Adventure",
+},
+{
+id: 5,
+type: "video",
+src: "/video2.mp4",
+category: "Wildlife",
+},
+{
+id: 6,
+type: "image",
+src: "/desert.jpg",
+category: "Nature",
+},
+// Add more items here
 ];
 
-const categories = ["all", "photos", "videos", "destination"];
+const Gallery = () => {
+const [searchTerm, setSearchTerm] = useState("");
+const [selectedCategory, setSelectedCategory] = useState("All");
+const [visibleItems, setVisibleItems] = useState([]);
+const [page, setPage] = useState(1);
+const [lightboxContent, setLightboxContent] = useState(null);
+const observer = useRef();
 
-Modal.setAppElement("#root");
+useEffect(() => {
+AOS.init({ duration: 1000 });
+}, []);
 
-export default function Gallery() {
-const [filter, setFilter] = useState("all");
-const [modalContent, setModalContent] = useState(null);
+// Get unique categories
+const categories = [
+"All",
+...Array.from(new Set(allGalleryItems.map((item) => item.category))),
+];
 
-const filteredItems = galleryItems.filter((item) => {
-if (filter === "all") return true;
-if (filter === "photos") return item.type === "image";
-if (filter === "videos") return item.type === "video";
-if (filter === "destination") return item.category === "destination";
-return true;
+// Filter by category and search
+const filteredItems = allGalleryItems.filter((item) => {
+const matchesCategory =
+selectedCategory === "All" || item.category === selectedCategory;
+const matchesSearch = item.category
+.toLowerCase()
+.includes(searchTerm.toLowerCase());
+return matchesCategory && matchesSearch;
 });
 
-const openModal = (item) => {
-setModalContent(item);
-};
+// Pagination logic (infinite scroll)
+useEffect(() => {
+const newItems = filteredItems.slice(0, page * 6);
+setVisibleItems(newItems);
+}, [page, selectedCategory, searchTerm]);
 
-const closeModal = () => {
-setModalContent(null);
-};
+const lastElementRef = useCallback(
+(node) => {
+if (observer.current) observer.current.disconnect();
+observer.current = new IntersectionObserver((entries) => {
+if (entries[0].isIntersecting && visibleItems.length < filteredItems.length) { setPage((prev)=> prev + 1);
+  }
+  });
+  if (node) observer.current.observe(node);
+  },
+  [visibleItems, filteredItems]
+  );
 
-return (
-<main className="min-h-screen bg-white text-gray-800 py-12 px-4 md:px-8 mt-12 sm:mt-20">
+  const handleOpenLightbox = (item) => {
+  setLightboxContent(item);
+  };
 
-  <Typography variant="h4" align="center" className="text-yellow-500 font-bold mb-6">
-    Explore Our Gallery
-  </Typography>
+  const handleCloseLightbox = () => {
+  setLightboxContent(null);
+  };
 
-  {/* Filter Buttons */}
-  <div className="flex justify-center gap-4 mb-10 flex-wrap">
-    {categories.map((cat) => (
-    <Button key={cat} variant={filter===cat ? "contained" : "outlined" } className={`!rounded-full ${ filter===cat
-      ? "!bg-yellow-500 text-white" : "!text-yellow-500 border-yellow-500" }`} onClick={()=> setFilter(cat)}
-      >
-      {cat.charAt(0).toUpperCase() + cat.slice(1)}
-    </Button>
-    ))}
-  </div>
+  return (
+  <>
+    {/* ✅ Hero Section */}
+    <section className="bg-gradient-to-br from-blue-300 to-indigo-600 text-white py-16 text-center mt-22">
+      <Container maxWidth="md">
+        <Typography variant="h3" className="font-bold mb-4">
+          Explore Our Gallery
+        </Typography>
+        <Typography variant="subtitle1">
+          Discover beautiful moments from our travel journeys.
+        </Typography>
+      </Container>
+    </section>
 
-  {/* Gallery Grid */}
-  <Container maxWidth="xl">
-    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-      {filteredItems.map((item, idx) => (
-      <Card key={idx} onClick={()=> openModal(item)}
-        className="rounded-lg shadow-md cursor-pointer"
-        >
-        {item.type === "image" ? (
-        <CardMedia component="img" height="200" image={item.src} alt={item.title} className="object-cover" />
-        ) : (
-        <CardMedia component="video" height="200" src={item.src} className="object-cover" muted autoPlay loop />
-        )}
-        <CardContent>
-          <Typography variant="subtitle1" className="text-gray-800 font-semibold">
-            {item.title}
-          </Typography>
-        </CardContent>
-      </Card>
-      ))}
-    </div>
-  </Container>
+    {/* ✅ Filter + Search */}
+    <Container className="py-10">
+      <Box className="flex flex-wrap gap-2 mb-6 justify-center">
+        {categories.map((cat) => (
+        <Chip key={cat} label={cat} color={selectedCategory===cat ? "primary" : "default" } onClick={()=> {
+          setSelectedCategory(cat);
+          setPage(1);
+          }}
+          />
+          ))}
+      </Box>
 
-  {/* Modal */}
-  <Modal isOpen={!!modalContent} onRequestClose={closeModal} contentLabel="Media Preview"
-    className="bg-white rounded-xl max-w-3xl mx-auto mt-20 p-4 outline-none"
-    overlayClassName="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-start z-50">
-    {modalContent && (
-    <>
-      <Typography variant="h6" className="mb-2 text-center text-yellow-500">
-        {modalContent.title}
-      </Typography>
-      {modalContent.type === "image" ? (
-      <img src={modalContent.src} alt={modalContent.title} className="w-full max-h-[70vh] object-contain rounded" />
-      ) : (
-      <video controls src={modalContent.src} className="w-full max-h-[70vh] rounded" />
-      )}
-      <Button onClick={closeModal} className="mt-4 !bg-yellow-500 text-white hover:!bg-yellow-600">
-        Close
-      </Button>
-    </>
-    )}
-  </Modal>
-</main>
-);
-}
+      <Box className="mb-8 max-w-md mx-auto">
+        <TextField label="Search by category" variant="outlined" fullWidth value={searchTerm} onChange={(e)=> {
+          setSearchTerm(e.target.value);
+          setPage(1);
+          }}
+          />
+      </Box>
+
+      {/* ✅ Gallery Grid */}
+      <Grid container spacing={2}>
+        {visibleItems.map((item, index) => {
+        const isLast = index === visibleItems.length - 1;
+
+        return (
+        <Grid item xs={12} sm={6} md={4} key={item.id} ref={isLast ? lastElementRef : null} data-aos="fade-up">
+          <div
+            className="cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+            onClick={()=> handleOpenLightbox(item)}
+            >
+            {item.type === "image" ? (
+            <img src={item.src} alt={item.category} className="w-full h-64 object-cover" />
+            ) : (
+            <video src={item.src} className="w-full h-64 object-cover" muted autoPlay loop />
+            )}
+          </div>
+        </Grid>
+        );
+        })}
+      </Grid>
+    </Container>
+
+    {/* ✅ Lightbox Modal */}
+    <Dialog open={!!lightboxContent} onClose={handleCloseLightbox} maxWidth="md" fullWidth>
+      <DialogContent className="bg-black p-0">
+        {lightboxContent?.type === "video" ? (
+        <video src={lightboxContent?.src} controls autoPlay className="w-full h-auto max-h-[80vh] mx-auto" />
+        ) : lightboxContent?.type === "image" ? (
+        <img src={lightboxContent?.src} alt="Preview" className="w-full h-auto max-h-[80vh] mx-auto" />
+        ) : null}
+      </DialogContent>
+    </Dialog>
+  </>
+  );
+  };
+
+  export default Gallery;
