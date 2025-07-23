@@ -21,6 +21,7 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import Navbar from "../../Navbar/Navbar";
 
 // ✅ Static data
 const keralaTour = {
@@ -80,7 +81,8 @@ const ItineraryKerala = () => {
   const theme = destinationThemes.kerala; // ✅ get theme
 
   return (
-    <Box sx={{ bgcolor: theme?.background, minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{ bgcolor: theme?.background, minHeight: "100vh", py: 4, mt: 10 }}>
+      <Navbar theme="kerala" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
           <Link color="inherit" to="/">Home</Link>

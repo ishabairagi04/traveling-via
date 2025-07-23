@@ -72,24 +72,26 @@ const Navbar = ({ theme = "default" }) => {
 
   return (
     <>
-      <AppBar
+  <AppBar
   position="fixed"
   sx={{
     top: 0,
     left: 0,
     right: 0,
-    maxWidth: "100vw", // ✅ Add this
-    overflowX: "hidden", // ✅ Prevents scroll
+    maxWidth: "100vw",
+    overflowX: "hidden",
     backgroundColor: styles.background,
-    backdropFilter: "blur(12px)",
+    // 👇 Conditionally disable blur
+    backdropFilter: drawerOpen ? "none" : "blur(12px)",
     boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
     color: styles.text,
     px: { xs: 2, md: 6 },
     py: 1.5,
-    transition: "box-shadow 0.3s ease",
+    transition: "box-shadow 0.3s ease, backdrop-filter 0.3s ease",
     zIndex: 1200,
   }}
 >
+
 
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           {/* Logo */}

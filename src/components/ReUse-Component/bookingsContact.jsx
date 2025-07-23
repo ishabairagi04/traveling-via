@@ -48,179 +48,193 @@ export default function TravelInfoSection() {
     >
       <Grid container spacing={6} alignItems="center" justifyContent="space-between" wrap="nowrap" sx={{ flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
         {/* Left side */}
-        <Grid item xs={12} md={6} sx={{ maxWidth: 520 }}>
+     <Grid item xs={12} md={6} sx={{ maxWidth: 520 }}>
+  <Typography
+    component="h2"
+    variant="h4"
+    sx={{
+      fontWeight: 700,
+      fontSize: { xs: '1.9rem', md: '1.75rem' },
+      mb: 1,
+      lineHeight: 1.2,
+      textAlign: 'left',
+      fontFamily: "'Poppins', sans-serif",
+      color: 'text.primary',
+      whiteSpace: 'pre-line',
+    }}
+  >
+    Escape the hustle and bustle, enjoy the perfect vacation.
+  </Typography>
+
+  <Typography
+    variant="body1"
+    sx={{
+      color: 'text.secondary',
+      fontSize: 12,
+      lineHeight: 1.6,
+      mb: 5,
+      fontWeight: 400,
+      maxWidth: 440,
+      fontFamily: "'Poppins', sans-serif",
+      textAlign: 'left',
+    }}
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar neque non pretium
+    volutpat. Proin finibus dignissim egestas...
+  </Typography>
+
+  <Grid
+    container
+    spacing={3}
+    sx={{ flexWrap: { xs: 'wrap', sm: 'nowrap' }, maxWidth: 440, mb: 5 }}
+  >
+    <Grid item xs={12} sm={6}>
+      <Stack spacing={1}>
+        <Stack direction="row" spacing={1.2} alignItems="center">
+          <DashedCircleIcon>
+            <TravelExploreOutlinedIcon sx={{ fontSize: 20 }} />
+          </DashedCircleIcon>
           <Typography
-            component="h2"
-            variant="h4"
             sx={{
               fontWeight: 700,
-              fontSize: { xs: '1.9rem', md: '1x`.75rem' },
-              mb: 1,
-              lineHeight: 1.2,
-              textAlign: 'left',
+              fontSize: 15,
               fontFamily: "'Poppins', sans-serif",
               color: 'text.primary',
-              whiteSpace: 'pre-line',
+              whiteSpace: 'nowrap',
             }}
           >
-            Escape the hustle and bustle, enjoy the perfect vacation.
+            Best Travel Agents
           </Typography>
+        </Stack>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: 13,
+            color: 'text.secondary',
+            maxWidth: 210,
+            fontFamily: "'Poppins', sans-serif",
+            lineHeight: 1.5,
+          }}
+        >
+          Pellentesque habitant morbi tristique senectus...
+        </Typography>
+      </Stack>
+    </Grid>
 
+    <Grid item xs={12} sm={6}>
+      <Stack spacing={1}>
+        <Stack direction="row" spacing={1.2} alignItems="center">
+          <DashedCircleIcon>
+            <LocationOnOutlinedIcon sx={{ fontSize: 20 }} />
+          </DashedCircleIcon>
           <Typography
-            variant="body1"
             sx={{
-              color: 'text.secondary',
-              fontSize: 12,
-              lineHeight: 1.6,
-              mb: 5,
-              fontWeight: 400,
-              maxWidth: 440,
+              fontWeight: 700,
+              fontSize: 15,
               fontFamily: "'Poppins', sans-serif",
-              textAlign: 'left',
+              color: 'text.primary',
+              whiteSpace: 'nowrap',
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar neque non pretium
-            volutpat. Proin finibus dignissim egestas. Sed a nisi quis dui malesuada pellentesque.
-            Donec eget nulla turpis. Nullam commodo sapien id placerat venenatis.
+            Travel Guidelines
           </Typography>
-<Grid container spacing={5} sx={{ display: 'flex', flexWrap: 'nowrap', maxWidth: 440, mb: 5 }}>
+        </Stack>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: 13,
+            color: 'text.secondary',
+            maxWidth: 210,
+            fontFamily: "'Poppins', sans-serif",
+            lineHeight: 1.5,
+          }}
+        >
+          Pellentesque habitant morbi tristique senectus...
+        </Typography>
+      </Stack>
+    </Grid>
+  </Grid>
 
-            <Grid item xs={6}>
-              <Stack spacing={1}>
-                <Stack direction="row" spacing={1.2} alignItems="center">
-                  <DashedCircleIcon>
-                    <TravelExploreOutlinedIcon sx={{ fontSize: 20 }} />
-                  </DashedCircleIcon>
-                  <Typography
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: 15,
-                      fontFamily: "'Poppins', sans-serif",
-                      color: 'text.primary',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Best Travel Agents
-                  </Typography>
-                </Stack>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: 13,
-                    color: 'text.secondary',
-                    maxWidth: 210,
-                    fontFamily: "'Poppins', sans-serif",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Pellentesque habitant morbi tristique senectus netus et malesuada fames ac
-                </Typography>
-              </Stack>
-            </Grid>
+  <Divider sx={{ mb: 6, maxWidth: 440 }} />
 
-            <Grid item xs={6}>
-              <Stack spacing={1}>
-                <Stack direction="row" spacing={1.2} alignItems="center">
-                  <DashedCircleIcon>
-                    <LocationOnOutlinedIcon sx={{ fontSize: 20 }} />
-                  </DashedCircleIcon>
-                  <Typography
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: 15,
-                      fontFamily: "'Poppins', sans-serif",
-                      color: 'text.primary',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Travel Guidelines
-                  </Typography>
-                </Stack>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: 13,
-                    color: 'text.secondary',
-                    maxWidth: 210,
-                    fontFamily: "'Poppins', sans-serif",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Pellentesque habitant morbi tristique senectus netus et malesuada fames ac
-                </Typography>
-              </Stack>
-            </Grid>
-          </Grid>
+  <Stack
+    direction={{ xs: 'column', sm: 'row' }}
+    spacing={3}
+    alignItems={{ xs: 'flex-start', sm: 'center' }}
+    sx={{ maxWidth: 440 }}
+  >
+    <Stack
+      direction="row"
+      spacing={1.5}
+      alignItems="center"
+      sx={{
+        borderRadius: 2,
+        flexShrink: 0,
+        minWidth: 140,
+      }}
+    >
+      <LocalPhoneIcon sx={{ fontSize: 24, backgroundColor: ORANGE, color: 'white' }} />
+      <Box>
+        <Typography
+          sx={{
+            fontSize: 13,
+            fontWeight: 400,
+            lineHeight: 1,
+            color: 'grey',
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          Booking Number
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: 16,
+            fontWeight: 700,
+            fontFamily: "'Poppins', sans-serif",
+            color: ORANGE,
+          }}
+        >
+          (229) 555–0109
+        </Typography>
+      </Box>
+    </Stack>
 
-          <Divider sx={{ mb: 6, maxWidth: 440 }} />
+    <Button
+      variant="contained"
+      sx={{
+        backgroundColor: ORANGE,
+        px: 3,
+        py: 1.5,
+        borderRadius: 2,
+        fontWeight: 700,
+        fontSize: 14,
+        textTransform: 'none',
+        boxShadow: 'none',
+        whiteSpace: 'nowrap',
+        '&:hover': {
+          backgroundColor: '#b58832',
+        },
+      }}
+    >
+      Booking Now
+    </Button>
+  </Stack>
+</Grid>
 
-          {/* Booking & button */}
-          <Stack direction="row" spacing={4} alignItems="center" sx={{ maxWidth: 440 }}>
-            <Stack
-              direction="row"
-              spacing={1.5}
-              alignItems="center"
-              sx={{
-                
-                borderRadius: 2,
-               
-              
-                flexShrink: 0,
-                minWidth: 140,
-              }}
-            >
-              <LocalPhoneIcon sx={{ fontSize: 24,backgroundColor: ORANGE,    color: 'white',}} />
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: 13,
-                    fontWeight: 400,
-                    lineHeight: 1,
-                      color: 'grey',
-                    fontFamily: "'Poppins', sans-serif",
-                  }}
-                >
-                  Booking Number
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 16,
-                    fontWeight: 700,
-                    fontFamily: "'Poppins', sans-serif",
-                       color: ORANGE,
-                  }}
-                >
-                  (229) 555–0109
-                </Typography>
-              </Box>
-            </Stack>
-
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: ORANGE,
-                px: 3,
-                py: 1.5,
-                position: 'relative',
-                left: 80,
-                borderRadius: 2,
-                fontWeight: 700,
-                fontSize: 14,
-                textTransform: 'none',
-                boxShadow: 'none',
-                whiteSpace: 'nowrap',
-                '&:hover': {
-                  backgroundColor: '#b58832',
-                },
-              }}
-            >
-              Booking Now
-            </Button>
-          </Stack>
-        </Grid>
 
         {/* Right Images */}
-        <Grid item xs={12} md={6} sx={{ position: 'relative', minHeight: 420, mt: { xs: 6, md: 0 }, pl: { md: 3 } }}>
+    <Grid
+  item
+  xs={12}
+  md={6}
+  sx={{
+    display: { xs: 'none', md: 'block' },
+    position: 'relative',
+    minHeight: 420,
+    mt: { xs: 6, md: 0 },
+  }}
+>
+
           {/* Big circle */}
           <Box
             sx={{

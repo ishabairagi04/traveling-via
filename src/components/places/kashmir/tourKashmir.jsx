@@ -21,6 +21,7 @@ import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 
 import destinationThemes from "../../ReUse-Component/theme"; // ✅ Make sure path is correct
+import Navbar from "../../Navbar/Navbar";
 
 const kashmirTour = {
   title: "Scenic Kashmir Getaway",
@@ -39,11 +40,11 @@ const kashmirTour = {
 };
 
 const kashmirMedia = [
-  { type: "image", src: "/kashmir1.jpg" },
-  { type: "image", src: "/kashmir2.jpg" },
-  { type: "image", src: "/kashmir3.jpg" },
-  { type: "image", src: "/kashmir4.jpg" },
-  { type: "image", src: "/kashmir5.jpg" },
+  { type: "image", src: "/manali.jpg" },
+  { type: "image", src: "/manali2.jpg" },
+  { type: "image", src: "/manali3.jpg" },
+  { type: "image", src: "/manali.jpg" },
+  { type: "image", src: "/manali2.jpg" },
 ];
 
 const itinerary = [
@@ -74,7 +75,8 @@ const ItineraryKashmir = () => {
   const theme = destinationThemes.kashmir; // ✅ Apply Kashmir theme
 
   return (
-    <Box sx={{background: 'linear-gradient(to bottom, white, #d4f1f9, #aee0f4)', minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{background: 'linear-gradient(to bottom, white, #d4f1f9, #aee0f4)', minHeight: "100vh", py: 4, mt:10 }}>
+      <Navbar theme="kashmir" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem", color: theme.text }}>
           <Link style={{ color: theme.text }} to="/">Home</Link>

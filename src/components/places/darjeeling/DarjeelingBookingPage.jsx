@@ -68,14 +68,16 @@ const DarjeelingBookingPage = () => {
       title: "Tea Garden Retreat",
       price: "₹10,999",
       duration: "3 Days / 2 Nights",
-      features: ["Stay in Tea Estate", "Tiger Hill Sunrise", "Toy Train Ride"]
+      features: ["Stay in Tea Estate", "Tiger Hill Sunrise", "Toy Train Ride"],
+       link: '/places/darjeeling/tour',
     },
     {
       id: 2,
       title: "Himalayan Adventure",
       price: "₹14,999",
       duration: "4 Days / 3 Nights",
-      features: ["Trekking", "Camping", "Batasia Loop Visit"]
+      features: ["Trekking", "Camping", "Batasia Loop Visit"],
+            link: '/places/darjeeling/tour',
     }
   ];
 
@@ -104,6 +106,7 @@ const DarjeelingBookingPage = () => {
         background: 'linear-gradient(to bottom,#b5d9d2, #eaf4ec, #dcefe2)',
       }}
     >
+      
       <LeafMist />
       <Navbar theme="darjeeling" />
 

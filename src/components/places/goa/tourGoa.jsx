@@ -20,6 +20,7 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import Navbar from "../../Navbar/Navbar";
 
 const goaTour = {
   title: "Beachside Bliss in Goa",
@@ -69,6 +70,7 @@ const ItineraryGoa = () => {
 
   return (
     <Box sx={{ background: "linear-gradient(to bottom right, #E0F7FA, #FDF6EC)", minHeight: "100vh", py: 4, mt: 20 }}>
+        <Navbar theme="beach" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs
           aria-label="breadcrumb"
