@@ -21,7 +21,20 @@ import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import Snowfall from 'react-snowfall';
 
+// ✅ Define theme at the top
+const manaliTheme = {
+  palette: {
+    primary: 'rgb(42, 157, 143);',
+    secondary: 'rgb(42, 157, 143)',
+   accent: '#00BCD4',
+    background: '#F4F4F4',
+    text: '#1A1A1A',
+  },
+};
+
 const ManaliBookingPage = () => {
+  const currentTheme = manaliTheme.palette;
+
   const packages = [
     {
       title: 'Mountain View Package',
@@ -83,16 +96,16 @@ const ManaliBookingPage = () => {
 
         {/* Booking Options */}
         <PackageSection
-          title="Available Packages"
+          title="Manali Packages"
           packages={packages}
-          theme="manali"
+          theme={manaliTheme}
         />
 
         {/* Contact Section */}
         <ContactInfoSection />
       </main>
 
-      {/* Footer with Snowy Blue Theme */}
+      {/* Footer */}
       <Footer theme="manali" />
     </div>
   );

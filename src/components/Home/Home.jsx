@@ -7,9 +7,12 @@ import { FiArrowLeft } from "react-icons/fi";
 import { IoIosStar } from "react-icons/io";
 import { FaCamera, FaVideo, FaHeart, FaUserTie, FaMapMarkedAlt, FaSpa, FaTags, FaClock } from "react-icons/fa";
 
+import { useNavigate } from "react-router-dom";
+
 import { Parallax } from 'react-parallax';
 
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import Footer from "../Footer/Footer";
 
 const packages = [
   {
@@ -176,6 +179,8 @@ const Home = () => {
   const [guests, setGuests] = useState(1);
   const [showSearch, setShowSearch] = useState(false);
 
+const navigate = useNavigate();
+
   const cardContainerRef = useRef(null);
   const { scrollY } = useViewportScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0.7]);
@@ -195,7 +200,7 @@ const Home = () => {
     <section
       className="w-full min-h-screen  mt-10"
     >
-      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/desert.jpg')" ,marginTop: "100px", height: "1000px" }}>
+      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/desert.jpg')" ,marginTop: "100px", height: "800px" }}>
         <div className="text-center  pt-30" data-aos="fade-up">
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
             Discover the world <br /> with our tours
@@ -350,9 +355,14 @@ const Home = () => {
                 </div>
               </div>
 
-              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-xl transition-all">
-                Booking Now
-              </button>
+   <button
+  onClick={() => navigate("/tour-packages")}
+  className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-xl transition-all"
+>
+  Booking Now
+</button>
+
+
             </div>
           </div>
         </div>
@@ -616,6 +626,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer theme="goa"/>
     </section>
   );
 };

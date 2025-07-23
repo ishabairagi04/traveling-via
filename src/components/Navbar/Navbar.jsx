@@ -20,8 +20,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
-
+import destinationThemes from "../ReUse-Component/theme"
 const Navbar = ({ theme = "default" }) => {
+  const currentTheme = destinationThemes[theme] || destinationThemes["default"];
   const [modalOpen, setModalOpen] = useState(false);
   const [elevated, setElevated] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -53,79 +54,82 @@ const Navbar = ({ theme = "default" }) => {
     console.log("Searching for:", query);
     setSearchOpen(false);
   };
+ 
+const styles = currentTheme;
 
-  const isBeach = theme === "beach";
-  const isKashmir = theme === "kashmir" || theme === "snow" || theme === "manali";
-  const isKerala = theme === "kerala";
-  const isMaldives = theme === "maldives";
-const isDarjeeling = theme === "darjeeling";
-  const isManali = theme === "manali";
-const isAssam = theme === "assam";
-const styles = {
-  background: isAssam
-    ? "rgba(255, 255, 255, 0.6)"
-    : isDarjeeling
-    ? "#c3e3dd"
-    : isManali
-    ? "rgba(230, 247, 255, 0.6)"
-    : isKashmir
-    ? "rgba(224, 247, 250, 0.5)"
-    : isBeach
-    ? "rgba(255, 255, 255, 0.4)"
-    : isMaldives
-    ? "rgba(229, 252, 255, 0.6)"
-    : isKerala
-    ? "rgba(215, 245, 208, 0.5)"
-    : "rgba(255, 255, 255, 0.2)",
 
-  text: isAssam
-    ? "#274e13"
-    : isDarjeeling
-    ? "#2b5f55"
-    : isManali
-    ? "#013a63"
-    : isKashmir
-    ? "#034752"
-    : isBeach
-    ? "#006d77"
-    : isMaldives
-    ? "#007f7f"
-    : isKerala
-    ? "#1B4332"
-    : "#000",
+//   const isBeach = theme === "beach";
+//   const isKashmir = theme === "kashmir" || theme === "snow" || theme === "manali";
+//   const isKerala = theme === "kerala";
+//   const isMaldives = theme === "maldives";
+// const isDarjeeling = theme === "darjeeling";
+//   const isManali = theme === "manali";
+// const isAssam = theme === "assam";
+// const styles = {
+//   background: isAssam
+//     ? "rgba(255, 255, 255, 0.6)"
+//     : isDarjeeling
+//     ? "#c3e3dd"
+//     : isManali
+//     ? "rgba(230, 247, 255, 0.6)"
+//     : isKashmir
+//     ? "rgba(224, 247, 250, 0.5)"
+//     : isBeach
+//     ? "rgba(255, 255, 255, 0.4)"
+//     : isMaldives
+//     ? "rgba(229, 252, 255, 0.6)"
+//     : isKerala
+//     ? "rgba(215, 245, 208, 0.5)"
+//     : "rgba(255, 255, 255, 0.2)",
 
-  highlight: isAssam
-    ? "#52b788"
-    : isDarjeeling
-    ? "#357f6b"
-    : isManali
-    ? "#90e0ef"
-    : isKashmir
-    ? "#00acc1"
-    : isBeach
-    ? "#00b4d8"
-    : isMaldives
-    ? "#5eead4"
-    : isKerala
-    ? "#52b788"
-    : "#facc15",
+//   text: isAssam
+//     ? "#274e13"
+//     : isDarjeeling
+//     ? "#2b5f55"
+//     : isManali
+//     ? "#013a63"
+//     : isKashmir
+//     ? "#034752"
+//     : isBeach
+//     ? "#006d77"
+//     : isMaldives
+//     ? "#007f7f"
+//     : isKerala
+//     ? "#1B4332"
+//     : "#000",
 
-  hover: isAssam
-    ? "#52b788"
-    : isDarjeeling
-    ? "#357f6b"
-    : isManali
-    ? "#00b4d8"
-    : isKashmir
-    ? "#00bcd4"
-    : isBeach
-    ? "#0077b6"
-    : isMaldives
-    ? "#38bdf8"
-    : isKerala
-    ? "#40916c"
-    : "#facc15",
-};
+//   highlight: isAssam
+//     ? "#52b788"
+//     : isDarjeeling
+//     ? "#357f6b"
+//     : isManali
+//     ? "#90e0ef"
+//     : isKashmir
+//     ? "#00acc1"
+//     : isBeach
+//     ? "#00b4d8"
+//     : isMaldives
+//     ? "#5eead4"
+//     : isKerala
+//     ? "#52b788"
+//     : "#facc15",
+
+//   hover: isAssam
+//     ? "#52b788"
+//     : isDarjeeling
+//     ? "#357f6b"
+//     : isManali
+//     ? "#00b4d8"
+//     : isKashmir
+//     ? "#00bcd4"
+//     : isBeach
+//     ? "#0077b6"
+//     : isMaldives
+//     ? "#38bdf8"
+//     : isKerala
+//     ? "#40916c"
+//     : "#facc15",
+// };
 
   return (
     <>
@@ -165,11 +169,12 @@ const styles = {
           >
             {[
               { label: "Home", path: "/" },
-              { label: "Tour Packages", path: "/all-itineraries" },
+              { label: "Tour Packages", path: "/tour-packages" },
               { label: "Destination", path: "/Destination" },
               { label: "Gallery", path: "/gallery" },
               { label: "About Us", path: "/about" },
               { label: "Contact Us", path: "/contact" },
+              // { label: "dashboard", path: "/dashboard"}
             ].map((item, idx) => (
               <Button
                 key={idx}

@@ -27,14 +27,17 @@ import ItineraryDarjeeling from './components/places/darjeeling/tourDarjeeling';
 import ItineraryUjjain from './components/places/ujjain/tourUjjain';
 import ItineraryMaldives from './components/places/maldives/tourMaldives';
 import ItineraryAssam from './components/places/assam/tourAssam';
-import AllItineraries from './components/Destinations/AllItineraries';
+// import AllItineraries from './components/Destinations/AllItineraries';
 import ItineraryGoa from './components/places/goa/tourGoa';
+import TourPackages from './components/tour-packeges/tourPackeges';
+// import Dashboard from './components/Dashboard/Dashboard';
 export default function App() {
   return (
     <Router>
       <div className="font-sans">
         <Navbar />
         <Routes>
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -43,7 +46,7 @@ export default function App() {
           <Route path="/places/manali" element={<ManaliBookingPage />} />
             <Route path="/places/goa" element={<GoaBookingPage />} />
                 <Route path="/places/kashmir" element={<KashmirBookingPage />} />
-        
+        <Route path="/tour-packages" element={<TourPackages />} />
         <Route path="/places/assam" element={<AssamBookingPage />} />
 
         <Route path="/places/kerala" element={<KeralaBookingPage />} />
@@ -62,7 +65,7 @@ export default function App() {
 <Route path="/places/assam/tour" element={<ItineraryAssam />} />
 <Route path="/places/goa/tour" element={<ItineraryGoa />} />
 
-<Route path="/all-itineraries" element={<AllItineraries />} />
+{/* <Route path="/all-itineraries" element={<AllItineraries />} /> */}
         </Routes>
         
       </div>
