@@ -11,6 +11,7 @@ import PackageSection from '../../ReUse-Component/PackageSection';
 import LocationOverview from '../../ReUse-Component/LocationOverview';
 import ContactInfoSection from '../../ReUse-Component/ContactInfoSection';
 import Footer from '../../Footer/Footer';
+import Navbar from '../../Navbar/Navbar';
 
 const KashmirBookingPage = () => {
   const packages = [
@@ -36,6 +37,7 @@ const KashmirBookingPage = () => {
 
   return (
     <div className="pt-25 font-sans text-[#0a2540] bg-gradient-to-b from-white via-[#d4f1f9] to-[#aee0f4]">
+       <Navbar theme="kashmir" />
       {/* ❄️ Hero Section */}
       <div className="relative w-full h-[420px] overflow-hidden">
         <img

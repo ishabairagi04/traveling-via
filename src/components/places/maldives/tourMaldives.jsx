@@ -20,6 +20,7 @@ import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 import destinationThemes from "../../ReUse-Component/theme"; // import the theme
+import Navbar from "../../Navbar/Navbar";
 
 const maldivesTour = {
   title: "Maldives Tropical Luxury Escape",
@@ -73,7 +74,8 @@ const ItineraryMaldives = () => {
   const selectedTour = maldivesTour;
 
   return (
-    <Box sx={{ bgcolor: theme.background, minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{ bgcolor: theme.background, minHeight: "100vh", py: 4, mt: 10 }}>
+  <Navbar theme="maldives" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem", color: theme.text }}>
           <Link style={{ color: theme.highlight }} to="/">Home</Link>

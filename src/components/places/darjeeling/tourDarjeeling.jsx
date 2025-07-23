@@ -19,6 +19,7 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import Navbar from "../../Navbar/Navbar";
 
 const darjeelingTour = {
   title: "Darjeeling Himalayan Escape",
@@ -66,7 +67,8 @@ const ItineraryDarjeeling = () => {
   const selectedTour = darjeelingTour;
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 10 }}>
+       <Navbar theme="darjeeling" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
           <Link color="inherit" to="/">Home</Link>

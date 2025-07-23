@@ -106,7 +106,7 @@ const TourBookingPage = () => {
     background: "linear-gradient(to bottom, #cde2f5, #e5f3fd, #f2f9ff)",
     minHeight: "100vh",
     py: 4,
-    mt: 0,
+    mt: 10,
   }}
 >
 

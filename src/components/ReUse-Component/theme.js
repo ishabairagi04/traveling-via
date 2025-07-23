@@ -62,7 +62,7 @@ const destinationThemes = {
   },
  
   default: {
-    background: "rgba(255, 255, 255, 0.2)",
+    background: "white",
     text: "#000",
     highlight: "#facc15",
     hover: "#facc15",
