@@ -37,7 +37,7 @@ const res = await axios.post("https://via-bhraman-backend.onrender.com/api/conta
 if (res.status === 200 || res.status === 201) {
 setSuccess(true);
 setForm({ name: "", email: "", message: "" });
-setTimeout(() => setSuccess(false), 4000);
+setTimeout(() => setSuccess(false), 500);
 } else {
 alert("Message could not be sent. Try again later.");
 }
