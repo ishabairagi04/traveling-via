@@ -170,82 +170,119 @@ export default function Destination() {
           }}
         >
           {trips.map((trip) => (
-            <Card
-              key={trip.id}
-              sx={{
-                position: 'relative',
-                minWidth: { xs: 260, sm: 300, md: 320 },
-                maxWidth: 320,
-                height: 400,
-                flex: '0 0 auto',
-                borderRadius: 4,
-                overflow: 'hidden',
-                boxShadow: 4,
-              }}
-            >
-              <CardMedia
-                component="img"
-                image={trip.image}
-                alt={trip.title}
-                sx={{ height: '100%', width: '100%', objectFit: 'cover' , }}
-              />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  p: 2,
-                  color: 'white',
-                }}
-              >
-                <Box sx={{ position: 'absolute', top: 12,right:12, display: 'flex', gap: 1 }}>
-                  {trip.featured && <Chip label="Featured" color="warning" size="small" />}
-                  <Chip label={`🖼 ${trip.mediaCount}`} size="small" />
-                  {trip.isVideo && <Chip label="🎥" size="small" />}
-                </Box>
-                <IconButton
-                  sx={{
-                    position: 'absolute',
-                    top: 12,
-                    right: 12,
-                    bgcolor: 'white',
-                    '&:hover': { bgcolor: '#f5f5f5' },
-                  }}
-                >
-                  <FavoriteBorderIcon />
-                </IconButton>
-                <Stack spacing={1}>
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <LocationOnIcon fontSize="small" />
-                    <Typography variant="caption">{trip.location}</Typography>
-                  </Stack>
-                  <Typography variant="subtitle1" fontWeight={600}>
-                    {trip.title}
-                  </Typography>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Stack direction="row" spacing={2}>
-                      <Typography variant="caption">
-                        <PeopleIcon fontSize="small" sx={{ mr: 0.5 }} />
-                        {trip.people} People
-                      </Typography>
-                      <Typography variant="caption">
-                        <CalendarTodayIcon fontSize="small" sx={{ mr: 0.5 }} />
-                        {trip.days} Days
-                      </Typography>
-                    </Stack>
-                    <Typography variant="subtitle2" fontWeight={700}>
-                      ${trip.price}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Card>
+          <Card
+  key={trip.id}
+  sx={{
+    position: 'relative',
+    width: { xs: '90%', sm: 260, md: 300, lg: 320 },
+    height: { xs: 350, sm: 380, md: 400 },
+    flex: '0 0 auto',
+    borderRadius: 4,
+    overflow: 'hidden',
+    boxShadow: 4,
+    mx: 'auto',
+  }}
+>
+  <CardMedia
+    component="img"
+    image={trip.image}
+    alt={trip.title}
+    sx={{
+      height: '100%',
+      width: '100%',
+      objectFit: 'cover',
+    }}
+  />
+  <Box
+    sx={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background:
+        'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      p: { xs: 1.5, sm: 2 },
+      color: 'white',
+    }}
+  >
+    {/* Chips */}
+    <Box
+      sx={{
+        position: 'absolute',
+        top: 12,
+        right: 12,
+        display: 'flex',
+        gap: 1,
+        zIndex: 1,
+        flexWrap: 'wrap',
+      }}
+    >
+      {trip.featured && <Chip label="Featured" color="warning" size="small" />}
+      <Chip label={`🖼 ${trip.mediaCount}`} size="small" />
+      {trip.isVideo && <Chip label="🎥" size="small" />}
+    </Box>
+
+    {/* Favorite Button */}
+    <IconButton
+      sx={{
+        position: 'absolute',
+        top: 12,
+        left: 12,
+        bgcolor: 'white',
+        '&:hover': { bgcolor: '#f5f5f5' },
+        zIndex: 1,
+      }}
+    >
+      <FavoriteBorderIcon />
+    </IconButton>
+
+    {/* Info Stack */}
+    <Stack spacing={1}>
+      <Stack direction="row" spacing={1} alignItems="center">
+        <LocationOnIcon fontSize="small" />
+        <Typography variant="caption" noWrap>
+          {trip.location}
+        </Typography>
+      </Stack>
+
+      <Typography
+        variant="subtitle1"
+        fontWeight={600}
+        sx={{ lineHeight: 1.2 }}
+      >
+        {trip.title}
+      </Typography>
+
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        flexWrap="wrap"
+        spacing={1}
+      >
+        <Stack direction="row" spacing={2}>
+          <Typography variant="caption" display="flex" alignItems="center">
+            <PeopleIcon fontSize="small" sx={{ mr: 0.5 }} />
+            {trip.people} People
+          </Typography>
+          <Typography variant="caption" display="flex" alignItems="center">
+            <CalendarTodayIcon fontSize="small" sx={{ mr: 0.5 }} />
+            {trip.days} Days
+          </Typography>
+        </Stack>
+
+        <Typography variant="subtitle2" fontWeight={700}>
+          ${trip.price}
+        </Typography>
+      </Stack>
+    </Stack>
+  </Box>
+</Card>
+
           ))}
         </Box>
       </Box>
