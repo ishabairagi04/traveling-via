@@ -19,6 +19,7 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import destinationThemes from "../../ReUse-Component/theme"; // import the theme
 
 const maldivesTour = {
   title: "Maldives Tropical Luxury Escape",
@@ -68,32 +69,38 @@ const itinerary = [
 ];
 
 const ItineraryMaldives = () => {
+  const theme = destinationThemes.maldives;
   const selectedTour = maldivesTour;
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{ bgcolor: theme.background, minHeight: "100vh", py: 4, mt: 20 }}>
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
-        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
-          <Link color="inherit" to="/">Home</Link>
-          <Link color="inherit" to="/search">Search Result</Link>
-          <Typography color="text.primary">{selectedTour.title}</Typography>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem", color: theme.text }}>
+          <Link style={{ color: theme.highlight }} to="/">Home</Link>
+          <Link style={{ color: theme.highlight }} to="/search">Search Result</Link>
+          <Typography color={theme.text}>{selectedTour.title}</Typography>
         </Breadcrumbs>
 
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: "#212529", mb: 1 }}>
+          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: theme.text, mb: 1 }}>
             {selectedTour.title}
           </Typography>
+
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Star sx={{ color: "#ffc107", mr: 0.5, fontSize: "1rem" }} />
-              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>{selectedTour.rating}</Typography>
+              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem", color: theme.text }}>
+                {selectedTour.rating}
+              </Typography>
               <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: "#6c757d" }}>
                 ({selectedTour.reviewCount} reviews)
               </Typography>
             </Box>
+
             <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: "#dee2e6" }} />
+
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Place sx={{ color: "#0d6efd", fontSize: "1rem", mr: 0.5 }} />
+              <Place sx={{ color: theme.highlight, fontSize: "1rem", mr: 0.5 }} />
               <Typography sx={{ fontSize: "0.875rem", color: "#6c757d" }}>
                 {selectedTour.location}
               </Typography>
@@ -141,12 +148,13 @@ const ItineraryMaldives = () => {
             ticketPrice={1299}
             perBookingPrice={80}
             servicePrices={{ adult: 70, youth: 60, child: 40 }}
+            destination="maldives"
             onBook={() => console.log("Booking Confirmed")}
           />
         </Box>
 
         <Box mt={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography variant="h6" fontWeight="bold" mb={2} color={theme.text}>
             You may like
           </Typography>
           <Grid container spacing={2}>
@@ -160,6 +168,5 @@ const ItineraryMaldives = () => {
   );
 };
 
-// ✅ Export as named and default
 export { ItineraryMaldives };
 export default ItineraryMaldives;

@@ -100,7 +100,7 @@ const GoaBookingPage = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <PackageSection title="Top Goa Packages" packages={packages} />
+          <PackageSection title="Top Goa Packages" packages={packages} theme="goa" />
         </motion.div>
 
         {/* 📞 Contact Info with Fade-in */}

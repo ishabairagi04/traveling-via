@@ -16,14 +16,18 @@ import {
   CalendarToday,
   AccessTime,
 } from "@mui/icons-material";
-
+import destinationThemes from "./theme";
 const TourBookingSidebar = ({
-  ticketPrice = 359,
+    ticketPrice = 359,
   perBookingPrice = 30,
   servicePrices = { adult: 30, youth: 25, child: 20 },
   onBook = () => {},
+  destination = "default", // <-- new prop
 }) => {
+  const theme = destinationThemes[destination] || destinationThemes.default;
+
   // STATE WITH LOCALSTORAGE SYNC
+
   const [date, setDate] = useState(() => localStorage.getItem("tourDate") || "");
   const [adultCount, setAdultCount] = useState(() => parseInt(localStorage.getItem("adultCount") || "2")); // default 2
   const [youthCount, setYouthCount] = useState(() => parseInt(localStorage.getItem("youthCount") || "0"));
@@ -96,13 +100,13 @@ const TourBookingSidebar = ({
     >
       <Box
         sx={{
-          bgcolor: "#ffffff",
+          bgcolor: theme.background,
           borderRadius: "8px",
           boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.05)",
           p: 3,
           position: "sticky",
           top: "20px",
-          border: "1px solid #dee2e6",
+        border: `1px solid ${theme.accent}`,
         }}
       >
         <Typography
@@ -111,7 +115,7 @@ const TourBookingSidebar = ({
             fontWeight: 600,
             mb: 2,
             fontSize: "1.25rem",
-            color: "#212529",
+          color: theme.text,
           }}
         >
           Book Your Tour
@@ -197,7 +201,8 @@ const TourBookingSidebar = ({
         <Button
           fullWidth
           variant="contained"
-          sx={{ bgcolor: "#fd7e14", fontWeight: 600 }}
+         sx={{ bgcolor: theme?.palette?.accent, fontWeight: 600, "&:hover": { bgcolor: theme.hover } }}
+
           onClick={onBook}
         >
           Book Now

@@ -22,7 +22,7 @@ import Navbar from '../../Navbar/Navbar';
     primary: '#2E7D32',
     secondary: '#A5D6A7',
      accent: "#52b788",
-    background: '#F7FFF7',
+    // background: '#F7FFF7',
     text: '#1C1C1C',
   },
 };

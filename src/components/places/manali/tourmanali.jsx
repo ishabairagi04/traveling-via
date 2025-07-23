@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import {
   CalendarToday,
@@ -28,7 +29,19 @@ import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 
-// ✅ Define suggested tours first
+// ✅ Manali Theme
+const manaliTheme = {
+  palette: {
+    primary: 'rgb(42, 157, 143)',     // teal
+    secondary: 'rgb(42, 157, 143)',
+    accent: '#00BCD4',                // cyan
+      background: "rgba(230, 247, 255, 0.6)",
+  text: "#013a63",
+  highlight: "#90e0ef",
+  hover: "#00b4d8",
+  },
+};
+
 const suggestedTours = [
   {
     title: "Lucerne and St. Moritz Relaxed Start",
@@ -52,7 +65,7 @@ const suggestedTours = [
   },
 ];
 
-const recommendedTours = [...suggestedTours]; // Use same data for demo
+const recommendedTours = [...suggestedTours];
 
 const manaliMedia = [
   { type: "image", src: "/public/manali.jpg" },
@@ -60,7 +73,6 @@ const manaliMedia = [
   { type: "image", src: "/manali3.jpg" },
   { type: "image", src: "/manali.jpg" },
   { type: "image", src: "/manali1.jpg" },
-
 ];
 
 const itinerary = [
@@ -82,46 +94,75 @@ const itinerary = [
     description:
       "After breakfast, proceed to Narkanda. Visit Hatu Peak and check-in to Homestay/Hotel. Dinner and overnight stay.",
   },
-  // Add more days as needed...
 ];
 
 const TourBookingPage = () => {
   const selectedTour = suggestedTours[0];
+  const theme = manaliTheme.palette;
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 20 }}>
+   <Box
+  sx={{
+    background: "linear-gradient(to bottom, #cde2f5, #e5f3fd, #f2f9ff)",
+    minHeight: "100vh",
+    py: 4,
+    mt: 0,
+  }}
+>
+
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         {/* Breadcrumbs */}
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
-          <Link color="inherit" href="#" underline="hover">
+          <Link color={theme.primary} href="#" underline="hover">
             Home
           </Link>
-          <Link color="inherit" href="#" underline="hover">
+          <Link color={theme.primary} href="#" underline="hover">
             Search Result
           </Link>
-          <Link color="inherit" href="#" underline="hover">
+          <Link color={theme.primary} href="#" underline="hover">
             Booking Options
           </Link>
-          <Typography color="text.primary">Lucerne and St. Moritz Relaxed Start</Typography>
+          <Typography color={theme.text}>
+            Lucerne and St. Moritz Relaxed Start
+          </Typography>
         </Breadcrumbs>
 
         {/* Tour Header */}
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: "#212529", mb: 1 }}>
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{
+              fontWeight: 700,
+              fontSize: "2rem",
+              color: theme.text,
+              mb: 1,
+            }}
+          >
             {selectedTour.title}
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Star sx={{ color: "#ffc107", mr: 0.5, fontSize: "1rem" }} />
-              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>4.8</Typography>
-              <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: "#6c757d" }}>
+              <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>
+                4.8
+              </Typography>
+              <Typography
+                sx={{ ml: 0.5, fontSize: "0.875rem", color: theme.primary }}
+              >
                 ({selectedTour.reviewCount} reviews)
               </Typography>
             </Box>
-            <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: "#dee2e6" }} />
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ height: "16px", bgcolor: "#dee2e6" }}
+            />
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Place sx={{ color: "#0d6efd", fontSize: "1rem", mr: 0.5 }} />
-              <Typography sx={{ fontSize: "0.875rem", color: "#6c757d" }}>
+              <Place
+                sx={{ color: theme.accent, fontSize: "1rem", mr: 0.5 }}
+              />
+              <Typography sx={{ fontSize: "0.875rem", color: theme.primary }}>
                 {selectedTour.location}
               </Typography>
             </Box>
@@ -132,7 +173,13 @@ const TourBookingPage = () => {
         <MediaGallery mediaItems={manaliMedia} />
 
         {/* Layout */}
-        <Box sx={{ display: "flex", flexDirection: { xs: "column", lg: "row" }, gap: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            gap: 4,
+          }}
+        >
           {/* Left Column */}
           <Box sx={{ flex: 1 }}>
             <TourDetailSection
@@ -147,7 +194,7 @@ const TourBookingPage = () => {
             <CalendarPriceSection
               title="Calendar & Price"
               monthLabel="July 2025"
-              pricePerDay="$359.00"
+              pricePerDay="₹359.00"
               highlightDates={[17, 22]}
               disabledDates={[5, 10, 15, 28]}
               daysInMonth={31}
@@ -173,18 +220,24 @@ const TourBookingPage = () => {
             perBookingPrice={30}
             servicePrices={{ adult: 30, youth: 25, child: 20 }}
             onBook={() => console.log("Booking Confirmed")}
+            theme={manaliTheme}
           />
         </Box>
 
         {/* Suggested Tours */}
         <Box mt={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography
+            variant="h6"
+            fontWeight="bold"
+            mb={2}
+            sx={{ color: theme.text }}
+          >
             You may like
           </Typography>
           <Grid container spacing={2}>
             {recommendedTours.map((tour, index) => (
               <Grid item key={index}>
-                <TourSuggestionCard {...tour} />
+                <TourSuggestionCard {...tour} theme={manaliTheme} />
               </Grid>
             ))}
           </Grid>
