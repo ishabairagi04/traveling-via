@@ -73,21 +73,24 @@ const Navbar = ({ theme = "default" }) => {
   return (
     <>
       <AppBar
-        position="fixed"
-        sx={{
-          top: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: styles.background,
-          backdropFilter: "blur(12px)",
-          boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
-          color: styles.text,
-          px: { xs: 2, md: 6 },
-          py: 1.5,
-          transition: "box-shadow 0.3s ease",
-          zIndex: 1200,
-        }}
-      >
+  position="fixed"
+  sx={{
+    top: 0,
+    left: 0,
+    right: 0,
+    maxWidth: "100vw", // ✅ Add this
+    overflowX: "hidden", // ✅ Prevents scroll
+    backgroundColor: styles.background,
+    backdropFilter: "blur(12px)",
+    boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
+    color: styles.text,
+    px: { xs: 2, md: 6 },
+    py: 1.5,
+    transition: "box-shadow 0.3s ease",
+    zIndex: 1200,
+  }}
+>
+
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           {/* Logo */}
          <Box
@@ -199,7 +202,7 @@ const Navbar = ({ theme = "default" }) => {
 
             {/* Hamburger Menu for Mobile */}
             <IconButton
-              sx={{ display: { xs: "flex", md: "none" }, color: styles.text }}
+              sx={{ display: { xs: "flex", md: "none" }, pl: {xs:"0"},color: styles.text }}
               onClick={() => setDrawerOpen(true)}
             >
               <MenuIcon />
