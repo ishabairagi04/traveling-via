@@ -136,7 +136,7 @@ const DarjeelingBookingPage = () => {
           </div>
         </div>
         {/* Tea leaf/mist shape overlay (optional) */}
-        <div className="absolute inset-0 bg-[url('/tea-leaf-overlay.png')] bg-center bg-cover opacity-10 mix-blend-soft-light" />
+        <div className="absolute inset-0 bg-[url('/')] bg-center bg-cover opacity-10 mix-blend-soft-light" />
       </motion.div>
 
       {/* Main Content */}

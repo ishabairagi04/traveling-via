@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './Carousel.css';
+import './carousel.css';
 import { Link } from 'react-router-dom';
 
 const destinations = [
   {
-    title: 'Manali',
+    title: 'MANALI',
     description: 'Nestled in the mountains of Himachal Pradesh with snow-capped peaks.',
     image: '/manali2.jpg',
     tours: '3 Tours',
