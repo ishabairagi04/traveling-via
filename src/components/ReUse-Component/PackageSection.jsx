@@ -32,12 +32,13 @@ const PackageSection = ({
             <p className="text-gray-600">{pkg.desc}</p>
 
             <div className="flex flex-wrap gap-3 mt-3">
-            {pkg.features.map((feature, idx) => (
+           {pkg.features.map((feature, idx) => (
   <span key={idx} className="flex items-center gap-2 text-sm text-gray-600">
     <FaCheckCircle className="text-green-500" />
-    {typeof feature === 'string' ? feature : <feature.type {...feature.props} />}
+    {feature}
   </span>
 ))}
+
 
             </div>
           </div>

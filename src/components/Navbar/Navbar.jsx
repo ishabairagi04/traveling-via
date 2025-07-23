@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AuthModal from "../LoginModal/AuthModal";
 import { Link } from "react-router-dom";
 import {
   AppBar,
@@ -14,13 +13,17 @@ import {
   InputBase,
   Paper,
   Alert,
+  Drawer,
 } from "@mui/material";
 
+import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
-import destinationThemes from "../ReUse-Component/theme"
+import AuthModal from "../LoginModal/AuthModal";
+import destinationThemes from "../ReUse-Component/theme";
+
 const Navbar = ({ theme = "default" }) => {
   const currentTheme = destinationThemes[theme] || destinationThemes["default"];
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,6 +31,7 @@ const Navbar = ({ theme = "default" }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +49,7 @@ const Navbar = ({ theme = "default" }) => {
     ];
     const isValid = allowedKeywords.some((keyword) =>
       query.toLowerCase().includes(keyword)
-    ); 
+    );
     if (!isValid) {
       setError("Only travel-related searches are allowed.");
       return;
@@ -54,82 +58,17 @@ const Navbar = ({ theme = "default" }) => {
     console.log("Searching for:", query);
     setSearchOpen(false);
   };
- 
-const styles = currentTheme;
 
+  const styles = currentTheme;
 
-//   const isBeach = theme === "beach";
-//   const isKashmir = theme === "kashmir" || theme === "snow" || theme === "manali";
-//   const isKerala = theme === "kerala";
-//   const isMaldives = theme === "maldives";
-// const isDarjeeling = theme === "darjeeling";
-//   const isManali = theme === "manali";
-// const isAssam = theme === "assam";
-// const styles = {
-//   background: isAssam
-//     ? "rgba(255, 255, 255, 0.6)"
-//     : isDarjeeling
-//     ? "#c3e3dd"
-//     : isManali
-//     ? "rgba(230, 247, 255, 0.6)"
-//     : isKashmir
-//     ? "rgba(224, 247, 250, 0.5)"
-//     : isBeach
-//     ? "rgba(255, 255, 255, 0.4)"
-//     : isMaldives
-//     ? "rgba(229, 252, 255, 0.6)"
-//     : isKerala
-//     ? "rgba(215, 245, 208, 0.5)"
-//     : "rgba(255, 255, 255, 0.2)",
-
-//   text: isAssam
-//     ? "#274e13"
-//     : isDarjeeling
-//     ? "#2b5f55"
-//     : isManali
-//     ? "#013a63"
-//     : isKashmir
-//     ? "#034752"
-//     : isBeach
-//     ? "#006d77"
-//     : isMaldives
-//     ? "#007f7f"
-//     : isKerala
-//     ? "#1B4332"
-//     : "#000",
-
-//   highlight: isAssam
-//     ? "#52b788"
-//     : isDarjeeling
-//     ? "#357f6b"
-//     : isManali
-//     ? "#90e0ef"
-//     : isKashmir
-//     ? "#00acc1"
-//     : isBeach
-//     ? "#00b4d8"
-//     : isMaldives
-//     ? "#5eead4"
-//     : isKerala
-//     ? "#52b788"
-//     : "#facc15",
-
-//   hover: isAssam
-//     ? "#52b788"
-//     : isDarjeeling
-//     ? "#357f6b"
-//     : isManali
-//     ? "#00b4d8"
-//     : isKashmir
-//     ? "#00bcd4"
-//     : isBeach
-//     ? "#0077b6"
-//     : isMaldives
-//     ? "#38bdf8"
-//     : isKerala
-//     ? "#40916c"
-//     : "#facc15",
-// };
+  const navLinks = [
+    { label: "Home", path: "/" },
+    { label: "Tour Packages", path: "/tour-packages" },
+    { label: "Destination", path: "/Destination" },
+    { label: "Gallery", path: "/gallery" },
+    { label: "About Us", path: "/about" },
+    { label: "Contact Us", path: "/contact" },
+  ];
 
   return (
     <>
@@ -151,31 +90,48 @@ const styles = currentTheme;
       >
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           {/* Logo */}
-          <Box display="flex" alignItems="center" gap={1}>
-            <Box sx={{ width: 250, height: 100 }}>
-              <img
-                src="/logo.png"
-                alt="Via Brahman Logo"
-                style={{ width: 300, height: 200, objectFit: "contain", marginTop: -50 }}
-              />
-            </Box>
-          </Box>
+         <Box
+  display="flex"
+  alignItems="center"
+  gap={1}
+  sx={{
+    flex: "1 1 auto",
+    minWidth: "150px",
+    pl: { xs: 1, sm: 2 },         // padding left responsive
+    pt: 0,                        // no padding top
+    pb: 0,
+    height: { xs: 50, sm: 60 },   // match height of header
+  }}
+>
+  <Box
+    sx={{
+      width: { xs: 100, sm: 140 },   // responsive logo size
+      height: "auto",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <img
+      src="/logo.png"
+      alt="Via Bhraman Logo"
+      style={{
+        width: "100%",
+        height: "auto",
+        objectFit: "contain",
+        display: "block",
+      }}
+    />
+  </Box>
+</Box>
 
-          {/* Nav Links */}
+
+          {/* Desktop Nav Links */}
           <Stack
             direction="row"
             spacing={4}
             sx={{ display: { xs: "none", md: "flex" }, ml: 4 }}
           >
-            {[
-              { label: "Home", path: "/" },
-              { label: "Tour Packages", path: "/tour-packages" },
-              { label: "Destination", path: "/Destination" },
-              { label: "Gallery", path: "/gallery" },
-              { label: "About Us", path: "/about" },
-              { label: "Contact Us", path: "/contact" },
-              // { label: "dashboard", path: "/dashboard"}
-            ].map((item, idx) => (
+            {navLinks.map((item, idx) => (
               <Button
                 key={idx}
                 component={Link}
@@ -200,57 +156,100 @@ const styles = currentTheme;
             ))}
           </Stack>
 
-          {/* Right Side Icons */}
+          {/* Icons & Mobile Menu Button */}
           <Stack direction="row" spacing={2} alignItems="center">
-            <IconButton
-              onClick={() => setSearchOpen(true)}
-              sx={{
-                borderRadius: "8px",
-                color: styles.text,
-                transition: "all 0.2s ease",
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.4)",
-                  backdropFilter: "blur(6px)",
-                },
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <IconButton
-              sx={{
-                borderRadius: "8px",
-                color: styles.text,
-                transition: "all 0.2s ease",
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.4)",
-                  backdropFilter: "blur(6px)",
-                },
-              }}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <Stack
-              direction="row"
-              alignItems="center"
-              spacing={0.5}
-              sx={{
-                borderRadius: "8px",
-                transition: "all 0.2s ease",
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.4)",
-                  backdropFilter: "blur(6px)",
-                },
-              }}
-            >
+            {/* Search */}
+          <IconButton
+  onClick={() => setSearchOpen(true)}
+  sx={{ color: styles.text, display: { xs: "none", sm: "inline-flex" } }}
+>
+  <SearchIcon />
+</IconButton>
+
+            {/* Favorites */}
+           <IconButton sx={{ color: styles.text, display: { xs: "none", sm: "inline-flex" } }}>
+  <FavoriteIcon />
+</IconButton>
+
+
+            {/* User/Login */}
+            <Stack direction="row" spacing={0.5} alignItems="center">
               <PersonIcon sx={{ color: styles.text }} />
               <Typography variant="body2" fontWeight={500}>
-                <button onClick={() => setModalOpen(true)}>Login / Register</button>
-                <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} defaultToLogin={false} />
+                <Button
+  fullWidth
+  onClick={() => {
+    setModalOpen(true);
+    setDrawerOpen(false);
+  }}
+  sx={{
+    justifyContent: "flex-start",
+    pl: 1.5, // 👈 aligns it with other buttons
+    mb: 1,
+    color: styles.text,
+    "&:hover": { color: styles.hover },
+  }}
+>
+  Login / Register
+</Button>
+
+
               </Typography>
             </Stack>
+
+            {/* Hamburger Menu for Mobile */}
+            <IconButton
+              sx={{ display: { xs: "flex", md: "none" }, color: styles.text }}
+              onClick={() => setDrawerOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
           </Stack>
         </Toolbar>
       </AppBar>
+
+      {/* Drawer for Mobile Nav */}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        PaperProps={{ sx: { width: 250, backgroundColor: styles.background } }}
+      >
+        <Box p={2}>
+          <Typography variant="h6" mb={2}>
+            Menu
+          </Typography>
+
+          {navLinks.map((item, idx) => (
+            <Button
+              key={idx}
+              component={Link}
+              to={item.path}
+              fullWidth
+              sx={{
+                justifyContent: "flex-start",
+                mb: 1,
+                color: styles.text,
+                "&:hover": { color: styles.hover },
+              }}
+              onClick={() => setDrawerOpen(false)}
+            >
+              {item.label}
+            </Button>
+          ))}
+
+          <Button
+            fullWidth
+            onClick={() => {
+              setModalOpen(true);
+              setDrawerOpen(false);
+            }}
+            sx={{ color: styles.text, mt: 2, "&:hover": { color: styles.hover } }}
+          >
+            Login / Register
+          </Button>
+        </Box>
+      </Drawer>
 
       {/* Search Dialog */}
       <Dialog open={searchOpen} onClose={() => setSearchOpen(false)} fullWidth maxWidth="sm">
@@ -296,6 +295,9 @@ const styles = currentTheme;
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Auth Modal */}
+      <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} defaultToLogin={false} />
     </>
   );
 };

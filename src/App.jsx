@@ -30,12 +30,14 @@ import ItineraryAssam from './components/places/assam/tourAssam';
 // import AllItineraries from './components/Destinations/AllItineraries';
 import ItineraryGoa from './components/places/goa/tourGoa';
 import TourPackages from './components/tour-packeges/tourPackeges';
+import ScrollToTop from './components/ReUse-Component/scrollTop';
 // import Dashboard from './components/Dashboard/Dashboard';
 export default function App() {
   return (
     <Router>
       <div className="font-sans">
         <Navbar />
+          <ScrollToTop />
         <Routes>
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/" element={<Home />} />

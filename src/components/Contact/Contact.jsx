@@ -14,6 +14,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Footer from "../Footer/Footer";
 
 export default function Contact() {
 const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -36,7 +37,7 @@ const res = await axios.post("https://via-bhraman-backend.onrender.com/api/conta
 if (res.status === 200 || res.status === 201) {
 setSuccess(true);
 setForm({ name: "", email: "", message: "" });
-setTimeout(() => setSuccess(false), 4000);
+setTimeout(() => setSuccess(false), 500);
 } else {
 alert("Message could not be sent. Try again later.");
 }
@@ -196,6 +197,7 @@ return (
       <li>Don’t forget travel insurance!</li>
     </ul>
   </div>
+    <Footer theme="goa"/>
 </main>
 );
 }
