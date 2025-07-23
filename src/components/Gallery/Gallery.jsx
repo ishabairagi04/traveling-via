@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from "../Footer/Footer";
 
 const allGalleryItems = Array.from({ length: 156 }, (_, index) => {
   const id = index + 1;
@@ -151,6 +152,7 @@ const Gallery = () => {
           ) : null}
         </DialogContent>
       </Dialog>
+        <Footer theme="goa"/>
     </>
   );
 };

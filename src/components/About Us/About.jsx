@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaPhoneAlt, FaGlobeAsia, FaMoneyCheckAlt , FaUserAlt } from "react-icons/fa";
+import Footer from "../Footer/Footer";
 
 
 
@@ -414,7 +415,7 @@ return (
         </div>
     </section>
 
-
+  <Footer theme="goa"/>
 </section>
 );
 };

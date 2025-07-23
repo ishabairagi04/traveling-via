@@ -14,6 +14,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Footer from "../Footer/Footer";
 
 export default function Contact() {
 const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -196,6 +197,7 @@ return (
       <li>Don’t forget travel insurance!</li>
     </ul>
   </div>
+    <Footer theme="goa"/>
 </main>
 );
 }

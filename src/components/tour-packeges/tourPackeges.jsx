@@ -384,7 +384,8 @@ const TourPackages = () => {
       </Container>
 
     </Box>
-    <Footer theme="maldives"/>
+ 
+      <Footer theme="goa"/>
    </section>
   );
 };
