@@ -173,7 +173,7 @@ export default function TravelInfoSection() {
         minWidth: 140,
       }}
     >
-      <LocalPhoneIcon sx={{ fontSize: 24, backgroundColor: ORANGE, color: 'white' }} />
+      <LocalPhoneIcon sx={{ fontSize: 24, backgroundColor: 'white', color: 'blue' }} />
       <Box>
         <Typography
           sx={{
@@ -202,7 +202,7 @@ export default function TravelInfoSection() {
     <Button
       variant="contained"
       sx={{
-        backgroundColor: ORANGE,
+        backgroundColor: blue,
         px: 3,
         py: 1.5,
         borderRadius: 2,

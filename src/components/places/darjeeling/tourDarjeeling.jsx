@@ -20,6 +20,10 @@ import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 import Navbar from "../../Navbar/Navbar";
+import destinationThemes from "../../ReUse-Component/theme"; // ✅ import themes
+import Footer from "../../Footer/Footer";
+
+const theme = destinationThemes["darjeeling"]; // ✅ use darjeeling theme
 
 const darjeelingTour = {
   title: "Darjeeling Himalayan Escape",
@@ -67,8 +71,8 @@ const ItineraryDarjeeling = () => {
   const selectedTour = darjeelingTour;
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 10 }}>
-       <Navbar theme="darjeeling" />
+    <Box sx={{  background: 'linear-gradient(to bottom,#b5d9d2, #eaf4ec, #dcefe2)', minHeight: "100vh", py: 4, mt: 10 }}>
+      <Navbar theme="darjeeling" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
           <Link color="inherit" to="/">Home</Link>
@@ -77,20 +81,27 @@ const ItineraryDarjeeling = () => {
         </Breadcrumbs>
 
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: "#212529", mb: 1 }}>
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{ fontWeight: 700, fontSize: "2rem", color: theme.text, mb: 1 }}
+          >
             {selectedTour.title}
           </Typography>
+
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Star sx={{ color: "#ffc107", mr: 0.5, fontSize: "1rem" }} />
+              <Star sx={{ color: theme.highlight, mr: 0.5, fontSize: "1rem" }} />
               <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>{selectedTour.rating}</Typography>
               <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: "#6c757d" }}>
                 ({selectedTour.reviewCount} reviews)
               </Typography>
             </Box>
+
             <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: "#dee2e6" }} />
+
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Place sx={{ color: "#0d6efd", fontSize: "1rem", mr: 0.5 }} />
+              <Place sx={{ color: theme.highlight, fontSize: "1rem", mr: 0.5 }} />
               <Typography sx={{ fontSize: "0.875rem", color: "#6c757d" }}>
                 {selectedTour.location}
               </Typography>
@@ -107,9 +118,10 @@ const ItineraryDarjeeling = () => {
               includedItems={selectedTour.includedItems}
               notIncludedItems={selectedTour.notIncludedItems}
               amenities={selectedTour.amenities}
+              theme={theme}
             />
 
-            <ItinerarySection itinerary={itinerary} title="Tour Plan" />
+            <ItinerarySection itinerary={itinerary} title="Tour Plan" theme={theme} />
 
             <CalendarPriceSection
               title="Calendar & Price"
@@ -119,6 +131,7 @@ const ItineraryDarjeeling = () => {
               disabledDates={[1, 8, 25]}
               daysInMonth={31}
               monthStartsOn={3}
+              theme={theme}
             />
 
             <TourMap
@@ -128,10 +141,11 @@ const ItineraryDarjeeling = () => {
               coordinates={[27.0360, 88.2627]}
               imageUrl="/images/darjeeling-map.jpg"
               zoom={13}
+              theme={theme}
             />
 
-            <FaqSection />
-            <CustomerReviews />
+            <FaqSection theme={theme} />
+            <CustomerReviews theme={theme} />
           </Box>
 
           <TourBookingSidebar
@@ -139,24 +153,25 @@ const ItineraryDarjeeling = () => {
             perBookingPrice={45}
             servicePrices={{ adult: 35, youth: 30, child: 20 }}
             onBook={() => console.log("Booking Confirmed")}
+            theme={theme}
           />
         </Box>
 
         <Box mt={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography variant="h6" fontWeight="bold" mb={2} sx={{ color: theme.text }}>
             You may like
           </Typography>
           <Grid container spacing={2}>
             <Grid item>
-              <TourSuggestionCard {...selectedTour} />
+              <TourSuggestionCard {...selectedTour} theme={theme} />
             </Grid>
           </Grid>
         </Box>
       </Box>
+      <Footer theme="darjeeling" />
     </Box>
   );
 };
 
-// ✅ Export as named and default
 export { ItineraryDarjeeling };
 export default ItineraryDarjeeling;

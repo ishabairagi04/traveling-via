@@ -18,7 +18,9 @@ import {
 
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import AuthModal from "../LoginModal/AuthModal";
@@ -32,14 +34,30 @@ const Navbar = ({ theme = "default" }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [authMode, setAuthMode] = useState("login"); // or 'register'
+const themeMUI = useTheme();
+const isLargeScreen = useMediaQuery(themeMUI.breakpoints.up("md"));
 
-  useEffect(() => {
-    const handleScroll = () => {
+useEffect(() => {
+  const handleScroll = () => {
+    if (isLargeScreen) {
       setElevated(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    } else {
+      setElevated(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [isLargeScreen]);
+
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setElevated(window.scrollY > 0);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const handleSearch = () => {
     const allowedKeywords = [
@@ -72,145 +90,157 @@ const Navbar = ({ theme = "default" }) => {
 
   return (
     <>
-  <AppBar
-  position="fixed"
-  sx={{
-    top: 0,
-    left: 0,
-    right: 0,
-    maxWidth: "100vw",
-    overflowX: "hidden",
-    backgroundColor: styles.background,
-    // 👇 Conditionally disable blur
-    backdropFilter: drawerOpen ? "none" : "blur(12px)",
-    boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
-    color: styles.text,
-    px: { xs: 2, md: 6 },
-    py: 1.5,
-    transition: "box-shadow 0.3s ease, backdrop-filter 0.3s ease",
-    zIndex: 1200,
-  }}
->
+      <AppBar
+        position="fixed"
+        sx={{
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100%", // ✅ Use width instead of maxWidth
+          overflowX: "clip", // ✅ Ensures overflow content is clipped, not just hidden
+          backgroundColor: styles.background,
+          backdropFilter: drawerOpen ? "none" : "blur(12px)",
+          boxShadow: elevated ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
+          color: styles.text,
+          px: { xs: 1, md: 4 }, // ✅ Reduce padding slightly
+          py: 1.5,
+          transition: "box-shadow 0.3s ease, backdrop-filter 0.3s ease",
+          zIndex: 1200,
+        }}
+      >
 
-
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          {/* Logo */}
-         <Box
-  display="flex"
-  alignItems="center"
-  gap={1}
-  sx={{
-    flex: "1 1 auto",
-    minWidth: "150px",
-    pl: { xs: 1, sm: 2 },         // padding left responsive
-    pt: 0,                        // no padding top
-    pb: 0,
-    height: { xs: 50, sm: 60 },   // match height of header
-  }}
->
-  <Box
-    sx={{
-      width: { xs: 100, sm: 140 },   // responsive logo size
-      height: "auto",
-      display: "flex",
-      alignItems: "center",
-    }}
-  >
-    <img
-      src="/logo.png"
-      alt="Via Bhraman Logo"
-      style={{
-        width: "100%",
-        height: "auto",
-        objectFit: "contain",
-        display: "block",
+<Toolbar disableGutters sx={{ px: 2, alignItems: "center" }}>
+  {/* Left Section: Logo + Nav Links */}
+  <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+    {/* Logo */}
+    <Box
+      display="flex"
+      alignItems="center"
+      gap={1}
+      sx={{
+        minWidth: "100px",
+        pl: { xs: 1, sm: 2 },
+        pt: 0,
+        pb: 0,
+        height: { xs: 50, sm: 60 },
       }}
-    />
+    >
+      <Box
+        sx={{
+          width: { xs: 100, sm: 140 },
+          height: "auto",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src="/logo.png"
+          alt="Via Bhraman Logo"
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "contain",
+            display: "block",
+          }}
+        />
+      </Box>
+    </Box>
+
+    {/* Nav Links */}
+    <Stack
+      direction="row"
+      spacing={4}
+      sx={{ display: { xs: "none", md: "flex" } }}
+    >
+      {navLinks.map((item, idx) => (
+        <Button
+          key={idx}
+          component={Link}
+          to={item.path}
+          sx={{
+            fontWeight: 700,
+            color: styles.text,
+            textTransform: "none",
+            borderRadius: "8px",
+            px: 2,
+            py: 0.5,
+            transition: "all 0.2s ease",
+            "&:hover": {
+              color: styles.hover,
+              backgroundColor: "rgba(255, 255, 255, 0.4)",
+              backdropFilter: "blur(6px)",
+            },
+          }}
+        >
+          {item.label}
+        </Button>
+      ))}
+    </Stack>
   </Box>
-</Box>
 
+  {/* Right Section: Search + Auth + Mobile Menu */}
+  <Stack
+    direction="row"
+    spacing={2}
+    alignItems="center"
+    sx={{ marginLeft: "auto" }}
+  >
+    <IconButton
+      onClick={() => setSearchOpen(true)}
+      sx={{ color: styles.text, display: { xs: "none", sm: "inline-flex" } }}
+    >
+      <SearchIcon />
+    </IconButton>
 
-          {/* Desktop Nav Links */}
-          <Stack
-            direction="row"
-            spacing={4}
-            sx={{ display: { xs: "none", md: "flex" }, ml: 4 }}
-          >
-            {navLinks.map((item, idx) => (
-              <Button
-                key={idx}
-                component={Link}
-                to={item.path}
-                sx={{
-                  fontWeight: 700,
-                  color: styles.text,
-                  textTransform: "none",
-                  borderRadius: "8px",
-                  px: 2,
-                  py: 0.5,
-                  transition: "all 0.2s ease",
-                  "&:hover": {
-                    color: styles.hover,
-                    backgroundColor: "rgba(255, 255, 255, 0.4)",
-                    backdropFilter: "blur(6px)",
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </Stack>
+    <Stack direction="row" spacing={2}>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          setAuthMode("login");
+          setModalOpen(true);
+          setDrawerOpen(false);
+        }}
+        sx={{
+          color: styles.text,
+          borderColor: styles.text,
+          "&:hover": {
+            backgroundColor: styles.hover,
+            color: "#fff",
+            borderColor: styles.hover,
+          },
+        }}
+      >
+        Login
+      </Button>
 
-          {/* Icons & Mobile Menu Button */}
-          <Stack direction="row" spacing={2} alignItems="center">
-            {/* Search */}
-          <IconButton
-  onClick={() => setSearchOpen(true)}
-  sx={{ color: styles.text, display: { xs: "none", sm: "inline-flex" } }}
->
-  <SearchIcon />
-</IconButton>
+      <Button
+        variant="contained"
+        onClick={() => {
+          setAuthMode("register");
+          setModalOpen(true);
+          setDrawerOpen(false);
+        }}
+        sx={{
+          backgroundColor: styles.highlight,
+          color: "#fff",
+          "&:hover": {
+            backgroundColor: styles.hover,
+          },
+        }}
+      >
+        Register
+      </Button>
+    </Stack>
 
-            {/* Favorites */}
-           <IconButton sx={{ color: styles.text, display: { xs: "none", sm: "inline-flex" } }}>
-  <FavoriteIcon />
-</IconButton>
+    <IconButton
+      sx={{ display: { xs: "flex", md: "none" }, pl: 0, color: styles.text }}
+      onClick={() => setDrawerOpen(true)}
+    >
+      <MenuIcon />
+    </IconButton>
+  </Stack>
+</Toolbar>
 
-
-            {/* User/Login */}
-            <Stack direction="row" spacing={0.5} alignItems="center">
-              <PersonIcon sx={{ color: styles.text }} />
-              <Typography variant="body2" fontWeight={500}>
-                <Button
-  fullWidth
-  onClick={() => {
-    setModalOpen(true);
-    setDrawerOpen(false);
-  }}
-  sx={{
-    justifyContent: "flex-start",
-    pl: 1.5, // 👈 aligns it with other buttons
-    mb: 1,
-    color: styles.text,
-    "&:hover": { color: styles.hover },
-  }}
->
-  Login / Register
-</Button>
-
-
-              </Typography>
-            </Stack>
-
-            {/* Hamburger Menu for Mobile */}
-            <IconButton
-              sx={{ display: { xs: "flex", md: "none" }, pl: {xs:"0"},color: styles.text }}
-              onClick={() => setDrawerOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Stack>
-        </Toolbar>
       </AppBar>
 
       {/* Drawer for Mobile Nav */}
@@ -243,16 +273,29 @@ const Navbar = ({ theme = "default" }) => {
             </Button>
           ))}
 
-          <Button
-            fullWidth
-            onClick={() => {
-              setModalOpen(true);
-              setDrawerOpen(false);
-            }}
-            sx={{ color: styles.text, mt: 2, "&:hover": { color: styles.hover } }}
-          >
-            Login / Register
-          </Button>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <PersonIcon sx={{ color: styles.text }} />
+            <Button
+              onClick={() => {
+                setAuthMode("login");
+                setModalOpen(true);
+              }}
+              sx={{ color: styles.text }}
+            >
+              Login
+            </Button>
+            <Typography color={styles.text}>/</Typography>
+            <Button
+              onClick={() => {
+                setAuthMode("register");
+                setModalOpen(true);
+              }}
+              sx={{ color: styles.text }}
+            >
+              Register
+            </Button>
+          </Stack>
+
         </Box>
       </Drawer>
 
@@ -302,7 +345,12 @@ const Navbar = ({ theme = "default" }) => {
       </Dialog>
 
       {/* Auth Modal */}
-      <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} defaultToLogin={false} />
+      <AuthModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        defaultToLogin={authMode === "login"} // 👈 dynamically switch mode
+      />
+
     </>
   );
 };

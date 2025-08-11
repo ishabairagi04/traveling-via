@@ -21,6 +21,7 @@ import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
 import destinationThemes from "../../ReUse-Component/theme"; // import the theme
 import Navbar from "../../Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 const maldivesTour = {
   title: "Maldives Tropical Luxury Escape",
@@ -166,6 +167,7 @@ const ItineraryMaldives = () => {
           </Grid>
         </Box>
       </Box>
+      <Footer theme="maldives"/>
     </Box>
   );
 };

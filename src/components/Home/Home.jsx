@@ -13,6 +13,7 @@ import { Parallax } from 'react-parallax';
 
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 
 const packages = [
   {
@@ -198,17 +199,17 @@ const navigate = useNavigate();
 
   return (
     <section
-      className="w-full min-h-screen  mt-10"
-    >
-      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/desert.jpg')" ,marginTop: "100px", height: "800px" }}>
+      className="w-full min-h-screen  mt-10 bg-gradient-to-b from-[#cde2f5] via-[#e5f3fd] to-[#3c8ed5]"
+    > <Navbar theme="manali" />
+      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/goa.jpg')" ,marginTop: "100px", height: "800px" }}>
         <div className="text-center  pt-30" data-aos="fade-up">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
             Discover the world <br /> with our tours
           </h1>
-          <p className="text-gray-700 text-lg md:text-xl">
+          <p className="text-white text-lg md:text-xl">
             Escape the hustle and bustle, enjoy the perfect vacation.
           </p>
-          <button className="bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg mt-6 hover:bg-yellow-600 transition duration-200">
+          <button className=" text-white font-semibold px-8 py-3 rounded-lg mt-6 hover:bg-blue-900 transition duration-200">
             Start Exploring
           </button>
         </div>
@@ -218,7 +219,7 @@ const navigate = useNavigate();
       <div className="md:hidden mb-6 text-center mt-[-200px]">
         <button
           onClick={() => setShowSearch(!showSearch)}
-          className="text-yellow-600 font-semibold underline focus:outline-none"
+          className="text-blue-600 font-semibold underline focus:outline-none"
         >
           {showSearch ? "Hide Search Options ▲" : "Search Options ▼"}
         </button>
@@ -283,14 +284,14 @@ const navigate = useNavigate();
 
         {/* Search Button */}
         <div className="flex items-end">
-          <button className="bg-yellow-500 text-white font-bold px-6 py-3 rounded-lg w-full hover:bg-yellow-600 transition duration-200">
+          <button className="bg-blue-600 text-white font-bold px-6 py-3 rounded-lg w-full hover:bg-blue-900 transition duration-200">
             Search
           </button>
         </div>
       </div>
 </div>
       {/* === Frame 3 Section: Why Travel With Us === */}
-      <section className="py-20 mt-10 bg-white">
+      <section className="py-20 mt-10 ">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-12">
           {/* Left: Images */}
           <div className="relative flex-1 grid grid-cols-2 gap-4 items-center">
@@ -303,8 +304,8 @@ const navigate = useNavigate();
 
                 <div className="rotate-[20deg] text-[14px] font-semibold text-gray-600 leading-tight">
                   <span className="block">Explore new lands</span>
-                  <span className="text-yellow-600 text-2xl">↑</span>
-                  <span className="block text-yellow-600 font-bold">Via Brahman</span>
+                  <span className="text-blue-600 text-2xl">↑</span>
+                  <span className="block text-blue-600 font-bold">Via Brahman</span>
                 </div>
               </div>
             </div>
@@ -323,7 +324,7 @@ const navigate = useNavigate();
 
             <div className="grid sm:grid-cols-2 gap-6 mb-10">
               <div className="flex items-start gap-3">
-                <svg className="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317..." />
                 </svg>
                 <div>
@@ -332,7 +333,7 @@ const navigate = useNavigate();
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <svg className="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12.79A9 9..." />
                 </svg>
                 <div>
@@ -351,13 +352,13 @@ const navigate = useNavigate();
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Booking Number</p>
-                  <p className="text-xl font-bold text-yellow-600">(229) 555-0109</p>
+                  <p className="text-xl font-bold text-blue-600">(229) 555-0109</p>
                 </div>
               </div>
 
    <button
   onClick={() => navigate("/tour-packages")}
-  className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-xl transition-all"
+  className="bg-[#1976d2] hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-xl transition-all"
 >
   Booking Now
 </button>
@@ -368,12 +369,12 @@ const navigate = useNavigate();
         </div>
       </section>
       {/* === Frame 4 === */}
-      <section className="bg-white py-16">
+      <section className=" py-16">
         <div className="max-w-7xl mx-auto px-6 relative">
           <h2 className="text-3xl font-bold mb-8">Our Popular Packages</h2>
           <button
             onClick={handleSlideLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-yellow-500 text-white p-2 rounded-full z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#1976d2] text-white p-2 rounded-full z-10"
           >
             <FiArrowLeft size={24} />
           </button>
@@ -392,7 +393,7 @@ const navigate = useNavigate();
                   className="h-48 w-full object-cover rounded-t-xl"
                 />
                 <div className="p-4">
-                  <h4 className="text-lg font-bold text-gray-800 group-hover:text-yellow-500">
+                  <h4 className="text-lg font-bold text-gray-800 group-hover:text-blue-600">
                     {pkg.title}
                   </h4>
                   <p className="text-sm text-gray-600 mt-2">{pkg.description}</p>
@@ -404,7 +405,7 @@ const navigate = useNavigate();
       </section>
 
       {/* === Frame 5 === */}
-      <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20">
+      <section className=" py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-3">Our best-selling tours</h2>
           <p className="text-center text-gray-500 mb-10">
@@ -427,7 +428,7 @@ const navigate = useNavigate();
 
                   {/* Top Left Badges */}
                   <div className="absolute top-2 left-2 flex items-center gap-2">
-                    <span className="bg-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="bg-[#1976d2] text-white text-xs font-semibold px-3 py-1 rounded-full">
                       Featured
                     </span>
                     <span className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full flex items-center gap-1">
@@ -449,7 +450,7 @@ const navigate = useNavigate();
                 {/* Card Body */}
                 <div className="p-4 flex flex-col flex-1 justify-between">
                   {/* Rating */}
-                  <div className="flex items-center text-yellow-500 mb-2">
+                  <div className="flex items-center text-blue-600 mb-2">
                     {[...Array(5)].map((_, i) => (
                       <IoIosStar key={i} />
                     ))}
@@ -471,7 +472,7 @@ const navigate = useNavigate();
                   {/* Location & Price */}
                   <div className="flex justify-between items-center text-sm text-gray-600">
                     <div className="flex items-center gap-1">📍 {tour.location}</div>
-                    <div className="text-yellow-600 font-bold text-lg">{tour.price}</div>
+                    <div className="text-blue-600 font-bold text-lg">{tour.price}</div>
                   </div>
                 </div>
               </div>
@@ -481,7 +482,7 @@ const navigate = useNavigate();
       </section>
       {/*frame 6*/}
       {/* === Why Choose Via Brahman === */}
-      <section className="bg-[#d8a34d] w-3000px bg-opacity-30 py-16 px-4 ml-[-45px] mr-[-40px] ">
+      <section className="bg-[#1976d2] w-3000px bg-opacity-30 py-16 px-4 ml-[-45px] mr-[-40px] ">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
             Why choose Via Brahman
@@ -492,22 +493,22 @@ const navigate = useNavigate();
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {[
               {
-                icon: <FaMapMarkedAlt className="text-[#e5b955] text-4xl mx-auto mb-4" />,
+                icon: <FaMapMarkedAlt className="text-[#1976d2] text-4xl mx-auto mb-4" />,
                 title: "Best Travel Agents",
                 desc: "Choose us, and you'll enjoy exclusive offers and 24/7 dedicated customer service",
               },
               {
-                icon: <FaUserTie className="text-[#e5b955] text-4xl mx-auto mb-4" />,
+                icon: <FaUserTie className="text-[#1976d2] text-4xl mx-auto mb-4" />,
                 title: "Professional team",
                 desc: "With a professional team, we are committed to bringing you perfect vacations.",
               },
               {
-                icon: <FaSpa className="text-[#e5b955] text-4xl mx-auto mb-4" />,
+                icon: <FaSpa className="text-[#1976d2] text-4xl mx-auto mb-4" />,
                 title: "New experience",
                 desc: "We turn your travel dreams into reality with unforgettable and safe experiences",
               },
               {
-                icon: <FaTags className="text-[#e5b955] text-4xl mx-auto mb-4" />,
+                icon: <FaTags className="text-[#1976d2] text-4xl mx-auto mb-4" />,
                 title: "Price and quality",
                 desc: "Explore the world with us on unique journeys, competitive prices, and 5-star service",
               },
@@ -555,7 +556,7 @@ const navigate = useNavigate();
       </motion.div>
 
       {/* === Frame 7: Top Destinations === */}
-      <section className="py-20 bg-white">
+      <section className="py-20 ">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-2">Top choice for your trip</h2>
           <p className="text-center text-gray-500 mb-10">
@@ -574,7 +575,7 @@ const navigate = useNavigate();
                   alt={dest.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-2 left-2 bg-white px-4 py-2 rounded-xl shadow">
+                <div className="absolute bottom-2 left-2  px-4 py-2 rounded-xl shadow">
                   <h3 className="font-bold text-sm">{dest.name}</h3>
                   <p className="text-xs text-gray-500">
                     {dest.tours} Tour{dest.tours > 1 ? "s" : ""}
@@ -588,7 +589,7 @@ const navigate = useNavigate();
       </section>
 
       {/* === Frame 8: Latest Articles === */}
-      <section className="py-20 bg-white">
+      <section className="py-20 ">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-2">Latest news & articles</h2>
           <p className="text-center text-gray-500 mb-10">
@@ -609,7 +610,7 @@ const navigate = useNavigate();
 
                 {/* Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white">
-                  <span className="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-blue-600  text-xs font-bold px-3 py-1 rounded-full">
                     {article.tag}
                   </span>
 
@@ -619,14 +620,14 @@ const navigate = useNavigate();
                   </div>
 
                   <h4 className="font-bold text-md leading-snug mb-2">{article.title}</h4>
-                  <button className="text-sm underline hover:text-yellow-300">Read More</button>
+                  <button className="text-sm underline hover:text-blue-500">Read More</button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <Footer theme="goa"/>
+      <Footer theme="manali"/>
     </section>
   );
 };
