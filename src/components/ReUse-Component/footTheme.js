@@ -65,7 +65,7 @@ const destinationThemes = {
 
   manali: {
     icon: "🏔️",
-    background: "linear-gradient(to right, #e6f0f3, #d4ebf2, #b9e0ee)",
+    background: "linear-gradient(to right, #e6f0f3, #d4ebf2,#3c8ed5)",
     text: "#034752",
     subText: "#447371",
     accent: "#00bcd4",
@@ -75,7 +75,7 @@ const destinationThemes = {
     waveGradient: [
       { offset: "0%", color: "#e6f0f3" },
       { offset: "50%", color: "#d4ebf2" },
-      { offset: "100%", color: "#b9e0ee" },
+      { offset: "100%", color: "#3c8ed5" },
     ],
   },
 
@@ -111,16 +111,17 @@ goa: {
 ,
   default: {
     icon: "✈️",
-    background: "linear-gradient(to right, #FEEBCB, #A7E6D7)",
-    text: "#fff",
-    subText: "gray",
-    accent: "#facc15",
-    hover: "#facc15",
-    border: "#333",
-    inputBg: "#1f2937",
+     background: "linear-gradient(to right, #e6f0f3, #d4ebf2,#3c8ed5)",
+    text: "#034752",
+    subText: "#447371",
+    accent: "#00bcd4",
+    hover: "#00acc1",
+    border: "#90caf9",
+    inputBg: "rgba(255,255,255,0.5)",
     waveGradient: [
-      { offset: "0%", color: "#FEEBCB" },
-      { offset: "100%", color: "#A7E6D7" },
+      { offset: "0%", color: "#e6f0f3" },
+      { offset: "50%", color: "#d4ebf2" },
+      { offset: "100%", color: "#3c8ed5" },
     ],
   },
 };

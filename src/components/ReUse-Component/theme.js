@@ -1,5 +1,11 @@
 // themes.js
 const destinationThemes = {
+  default: {
+    background: "bg-gradient-to-b from-[#cde2f5] via-[#e5f3fd] to-[#3c8ed5]",
+    text: "#000",
+    highlight: "#facc15",
+    hover: "#facc15",
+  },
   assam: {
     background: "rgba(255, 255, 255, 0.6)",
     text: "#274e13",
@@ -61,12 +67,7 @@ const destinationThemes = {
   secondary: '#002B36'
   },
  
-  default: {
-    background: "white",
-    text: "#000",
-    highlight: "#facc15",
-    hover: "#facc15",
-  },
+ 
 };
 
 export default destinationThemes;

@@ -28,6 +28,8 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import Navbar from "../../Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 // ✅ Manali Theme
 const manaliTheme = {
@@ -109,6 +111,7 @@ const TourBookingPage = () => {
     mt: 10,
   }}
 >
+  <Navbar theme="manali"/>
 
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         {/* Breadcrumbs */}
@@ -243,6 +246,7 @@ const TourBookingPage = () => {
           </Grid>
         </Box>
       </Box>
+      <Footer theme="manali"/>
     </Box>
   );
 };

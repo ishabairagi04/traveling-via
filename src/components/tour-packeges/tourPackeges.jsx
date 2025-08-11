@@ -16,6 +16,7 @@ import {
 import { LocationOn, Star, Discount } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 
 const tourPackages = [
   {
@@ -107,6 +108,18 @@ const tourPackages = [
     highlights: ["Kaziranga National Park", "Brahmaputra River", "Tea Gardens", "Kamakhya Temple"],
         link: "/places/assam/tour",
   },
+   {
+    title: "goa paradise",
+    price: "$390",
+    originalPrice: "$470",
+    image: "/goa.jpg",
+    rating: 4.5,
+    duration: "4N/5D",
+    location: "Goa, India",
+    description: "beauty of the nature and some wavy beachy vibes of shouth India.",
+    highlights: ["bagha beachk", "rabe parties", "church", "beaches"],
+        link: "/places/goa/tour",
+  },
 ];
 
 
@@ -116,7 +129,8 @@ const TourPackages = () => {
   }, []);
 
   return (
-    <section  className="w-full min-h-screen  mt-30"> <Box sx={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+    <section  className="w-full min-h-screen  mt-10 bg-gradient-to-b from-[#cde2f5] via-[#e5f3fd] to-[#3c8ed5]"> <Box sx={{  minHeight: "100vh" }}>
+      <Navbar theme="manali" />
       {/* Hero Banner */}
       <Box
   sx={{
@@ -385,7 +399,7 @@ const TourPackages = () => {
 
     </Box>
  
-      <Footer theme="goa"/>
+      <Footer theme="manali"/>
    </section>
   );
 };

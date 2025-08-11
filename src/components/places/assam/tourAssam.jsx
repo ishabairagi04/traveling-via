@@ -19,6 +19,11 @@ import ItinerarySection from "../../ReUse-Component/ItinerarySection";
 import CalendarPriceSection from "../../ReUse-Component/CalendarPriceSection";
 import TourBookingSidebar from "../../ReUse-Component/BookingSidebar";
 import TourDetailSection from "../../ReUse-Component/description";
+import Navbar from "../../Navbar/Navbar";
+import destinationThemes from "../../ReUse-Component/theme";// import the theme
+import Footer from "../../Footer/Footer";
+
+const theme = destinationThemes["assam"]; // select assam theme
 
 const assamTour = {
   title: "Assam Wildlife & Tea Trail",
@@ -71,7 +76,8 @@ const ItineraryAssam = () => {
   const selectedTour = assamTour;
 
   return (
-    <Box sx={{ bgcolor: "#f8f9fa", minHeight: "100vh", py: 4, mt: 20 }}>
+    <Box sx={{ backgroundColor:"#eaf1e5", minHeight: "100vh", py: 4, mt: 10 }}>
+      <Navbar theme="assam" />
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: "0.875rem" }}>
           <Link color="inherit" to="/">Home</Link>
@@ -80,20 +86,23 @@ const ItineraryAssam = () => {
         </Breadcrumbs>
 
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: "#212529", mb: 1 }}>
+          <Typography variant="h3" component="h1" sx={{ fontWeight: 700, fontSize: "2rem", color: theme.text, mb: 1 }}>
             {selectedTour.title}
           </Typography>
+
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Star sx={{ color: "#ffc107", mr: 0.5, fontSize: "1rem" }} />
+              <Star sx={{ color: theme.highlight, mr: 0.5, fontSize: "1rem" }} />
               <Typography sx={{ fontWeight: 500, fontSize: "0.875rem" }}>{selectedTour.rating}</Typography>
               <Typography sx={{ ml: 0.5, fontSize: "0.875rem", color: "#6c757d" }}>
                 ({selectedTour.reviewCount} reviews)
               </Typography>
             </Box>
+
             <Divider orientation="vertical" flexItem sx={{ height: "16px", bgcolor: "#dee2e6" }} />
+
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Place sx={{ color: "#0d6efd", fontSize: "1rem", mr: 0.5 }} />
+              <Place sx={{ color: theme.highlight, fontSize: "1rem", mr: 0.5 }} />
               <Typography sx={{ fontSize: "0.875rem", color: "#6c757d" }}>
                 {selectedTour.location}
               </Typography>
@@ -110,9 +119,10 @@ const ItineraryAssam = () => {
               includedItems={selectedTour.includedItems}
               notIncludedItems={selectedTour.notIncludedItems}
               amenities={selectedTour.amenities}
+              theme={theme} // optional, if component supports
             />
 
-            <ItinerarySection itinerary={itinerary} title="Tour Plan" />
+            <ItinerarySection itinerary={itinerary} title="Tour Plan" theme={theme} />
 
             <CalendarPriceSection
               title="Calendar & Price"
@@ -122,6 +132,7 @@ const ItineraryAssam = () => {
               disabledDates={[1, 8, 28]}
               daysInMonth={31}
               monthStartsOn={2}
+              theme={theme}
             />
 
             <TourMap
@@ -131,10 +142,11 @@ const ItineraryAssam = () => {
               coordinates={[26.5775, 93.1711]}
               imageUrl="/images/assam-map.jpg"
               zoom={12}
+              theme={theme}
             />
 
-            <FaqSection />
-            <CustomerReviews />
+            <FaqSection theme={theme} />
+            <CustomerReviews theme={theme} />
           </Box>
 
           <TourBookingSidebar
@@ -142,20 +154,22 @@ const ItineraryAssam = () => {
             perBookingPrice={40}
             servicePrices={{ adult: 35, youth: 30, child: 20 }}
             onBook={() => console.log("Booking Confirmed")}
+            theme={theme}
           />
         </Box>
 
         <Box mt={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography variant="h6" fontWeight="bold" mb={2} sx={{ color: theme.text }}>
             You may like
           </Typography>
           <Grid container spacing={2}>
             <Grid item>
-              <TourSuggestionCard {...selectedTour} />
+              <TourSuggestionCard {...selectedTour} theme={theme} />
             </Grid>
           </Grid>
         </Box>
       </Box>
+      <Footer theme="assam"/>
     </Box>
   );
 };
