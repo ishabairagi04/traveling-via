@@ -69,13 +69,14 @@ const trips = [
 export default function Destination() {
   return (
     <section>
+      <Navbar theme='manali' />
       {/* Hero Section */}
       <Box
         sx={{
           position: 'relative',
           mt: { xs: 8, sm: 10 },
           height: { xs: '70vh', md: '60vh' },
-          backgroundImage: 'url(/slide-03.webp)',
+          backgroundImage: 'url(/goa.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           display: 'flex',

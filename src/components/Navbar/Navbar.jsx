@@ -24,7 +24,9 @@ import { useTheme } from "@mui/material/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import AuthModal from "../LoginModal/AuthModal";
-import destinationThemes from "../ReUse-Component/theme";
+import destinationThemes from "../ReUse-Component/NavTheme";
+import Dashboard from "../Dashboard/Dashboard";
+
 
 const Navbar = ({ theme = "default" }) => {
   const currentTheme = destinationThemes[theme] || destinationThemes["default"];
@@ -86,6 +88,7 @@ useEffect(() => {
     { label: "Gallery", path: "/gallery" },
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/contact" },
+    { label: "Dashboard", path: "/dashboard" },
   ];
 
   return (
@@ -214,22 +217,23 @@ useEffect(() => {
       </Button>
 
       <Button
-        variant="contained"
-        onClick={() => {
-          setAuthMode("register");
-          setModalOpen(true);
-          setDrawerOpen(false);
-        }}
-        sx={{
-          backgroundColor: styles.highlight,
-          color: "#fff",
-          "&:hover": {
-            backgroundColor: styles.hover,
-          },
-        }}
-      >
-        Register
-      </Button>
+  variant="contained"
+  onClick={() => {
+    setAuthMode("register");
+    setModalOpen(true);
+    setDrawerOpen(false);
+  }}
+  sx={{
+    color: styles.text,   // ✅ Correct reference
+    backgroundColor:styles.background,
+    "&:hover": {
+      backgroundColor: styles.hover,
+    },
+  }}
+>
+  Register
+</Button>
+
     </Stack>
 
     <IconButton
@@ -284,13 +288,13 @@ useEffect(() => {
             >
               Login
             </Button>
-            <Typography color={styles.text}>/</Typography>
+            <PersonIcon color={styles.text}>/</PersonIcon>
             <Button
               onClick={() => {
                 setAuthMode("register");
                 setModalOpen(true);
               }}
-              sx={{ color: styles.text }}
+              sx={{ color: styles.text, backgroundColor:'#fff'}}
             >
               Register
             </Button>

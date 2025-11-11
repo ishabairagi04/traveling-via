@@ -8,13 +8,13 @@ import { IoIosStar } from "react-icons/io";
 import { FaCamera, FaVideo, FaHeart, FaUserTie, FaMapMarkedAlt, FaSpa, FaTags, FaClock } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
-
+import { FaGlobe } from "react-icons/fa";
 import { Parallax } from 'react-parallax';
 
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 const packages = [
   {
     id: 1,
@@ -120,33 +120,35 @@ const bestSellingTours = [
 const destinations = [
   {
     id: 1,
-    name: "New York, USA",
-    tours: 1,
-    image: "/slide-03.webp",
+    name: "goa",
+    tours: 2,
+    image: "/goa.jpg",
+    link: "/places/goa"
   },
   {
     id: 2,
-    name: "Mount Fuji",
+    name: "Manali",
     tours: 1,
-    image: "/slide-03.webp",
+    image: "/manali.jpg",
   },
   {
     id: 3,
-    name: "Barcelona",
+    name: "kashmir",
     tours: 5,
-    image: "/slide-03.webp",
+    image: "/manali1.jpg",
   },
   {
     id: 4,
-    name: "Ha Noi",
+    name: "maldives",
     tours: 3,
-    image: "/slide-03.webp",
+    image: "/maldives.jpg",
+
   },
   {
     id: 5,
-    name: "Gyeongju",
+    name: "assam",
     tours: 5,
-    image: "/slide-03.webp",
+    image: "/assam1.jpg",
   },
 ];
 
@@ -175,9 +177,9 @@ const articles = [
 ];
 const Home = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [location, setLocation] = useState("");
-  const [tourType, setTourType] = useState("Adventure");
-  const [guests, setGuests] = useState(1);
+  const [location, setLocation] = useState();
+  const [tourType, setTourType] = useState();
+  const [guests, setGuests] = useState(2);
   const [showSearch, setShowSearch] = useState(false);
 
 const navigate = useNavigate();
@@ -197,11 +199,11 @@ const navigate = useNavigate();
     }
   };
 
-  return (
+  return (<>
     <section
       className="w-full min-h-screen  mt-10 bg-gradient-to-b from-[#cde2f5] via-[#e5f3fd] to-[#3c8ed5]"
     > <Navbar theme="manali" />
-      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/goa.jpg')" ,marginTop: "100px", height: "800px" }}>
+      <div className="bg-cover bg-center bg-no-repeat " style={{ backgroundImage: "url('/goa.jpg')" ,marginTop: "1px", height: "800px" , width:"100%"}}>
         <div className="text-center  pt-30" data-aos="fade-up">
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
             Discover the world <br /> with our tours
@@ -255,8 +257,8 @@ const navigate = useNavigate();
             onChange={(e) => setTourType(e.target.value)}
           >
             <option value="Adventure">Adventure</option>
-            <option value="Relax">Relax</option>
-            <option value="Cultural">Cultural</option>
+            <option value="Relax">Educational</option>
+            <option value="Cultural">Spritual</option>
           </select>
         </div>
 
@@ -275,7 +277,7 @@ const navigate = useNavigate();
           <label className="font-semibold text-gray-800 mb-1">Guests</label>
           <input
             type="number"
-            min="1"
+            min="2"
             className="border border-gray-300 rounded-md p-2"
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
@@ -345,10 +347,10 @@ const navigate = useNavigate();
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="bg-yellow-400 rounded-lg p-2">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h2l..." />
-                  </svg>
+                <div className="bg-blue-500 rounded-lg p-2">
+                  
+                  
+      <LocalPhoneIcon sx={{ fontSize: 24, color: 'white' }} />
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Booking Number</p>
@@ -555,38 +557,62 @@ const navigate = useNavigate();
         </Parallax>
       </motion.div>
 
-      {/* === Frame 7: Top Destinations === */}
-      <section className="py-20 ">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-2">Top choice for your trip</h2>
-          <p className="text-center text-gray-500 mb-10">
-            Discover the Most Popular Places to Visit
-          </p>
+     
+  {/* === Frame 7: Top Destinations === */}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            {destinations.map((dest) => (
-              <div
-                key={dest.id}
-                className={`relative overflow-hidden rounded-xl shadow-md ${dest.id === 1 ? "md:row-span-2" : ""
-                  }`}
-              >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-2 left-2  px-4 py-2 rounded-xl shadow">
-                  <h3 className="font-bold text-sm">{dest.name}</h3>
-                  <p className="text-xs text-gray-500">
-                    {dest.tours} Tour{dest.tours > 1 ? "s" : ""}
-                  </p>
-                </div>
-              </div>
-            ))}
+
+<section className="py-20">
+  <div className="max-w-7xl mx-auto px-4">
+    <h2 className="text-4xl font-bold text-center mb-2">
+      Top choice for your trip
+    </h2>
+    <p className="text-center text-gray-500 mb-10">
+      Discover the Most Popular Places to Visit
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+      {destinations.map((dest) => (
+        <div
+          key={dest.id}
+          onClick={() => console.log("Go to:", dest.name)} // replace with router.push(`/destination/${dest.id}`)
+          className={`relative overflow-hidden rounded-xl shadow-md cursor-pointer group transition duration-300 ${
+            dest.id === 1 ? "md:row-span-2" : ""
+          }`}
+        >
+          {/* Image with hover zoom */}
+          <img
+            src={dest.image}
+            alt={dest.name}
+            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+          />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition" />
+
+          {/* Destination info */}
+          <div className="absolute bottom-4 left-4">
+            <h3 className="font-bold text-2xl text-white drop-shadow-md">
+              {dest.name}
+            </h3>
+            <p className="text-lg text-white flex items-center gap-1">
+              <FaGlobe className="text-white h-5 w-5" />
+              {dest.tours} Tour{dest.tours > 1 ? "s" : ""}
+            </p>
           </div>
 
+          {/* Badge example */}
+          {dest.popular && (
+            <span className="absolute top-3 right-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full shadow-md">
+              Popular
+            </span>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       {/* === Frame 8: Latest Articles === */}
       <section className="py-20 ">
@@ -629,6 +655,7 @@ const navigate = useNavigate();
       </section>
       <Footer theme="manali"/>
     </section>
+    </>
   );
 };
 

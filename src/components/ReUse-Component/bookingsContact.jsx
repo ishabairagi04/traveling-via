@@ -33,7 +33,7 @@ function DashedCircleIcon({ children }) {
   );
 }
 
-export default function TravelInfoSection() {
+export default function BookingContact() {
   return (
     <Box
       sx={{
@@ -202,7 +202,7 @@ export default function TravelInfoSection() {
     <Button
       variant="contained"
       sx={{
-        backgroundColor: blue,
+        backgroundColor: 'blue',
         px: 3,
         py: 1.5,
         borderRadius: 2,
