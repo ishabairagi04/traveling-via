@@ -21,6 +21,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "aos": "^2.3.4",
     "axios": "^1.10.0",
+    "date-fns": "^3.6.0",
     "exenv": "^1.2.2",
     "framer-motion": "^12.19.2",
     "leaflet": "^1.9.4",

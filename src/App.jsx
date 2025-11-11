@@ -34,7 +34,7 @@ import ItineraryEducational from './components/places/Educational/Rajasthan/Raj'
 import SclHyderabad from './components/places/Educational/Hyderabad/SclHyderabad';
 import SclAhemdabad from './components/places/Educational/Ahemdabad/SclAhemdabad';
 import SclManali from './components/places/Educational/Manali/SclManali';
-import Dashboard from './components/Dashboard/Dashboard';
+// import Dashboard from './components/Dashboard/Dashboard';
 
 
 export default function App() {
@@ -49,7 +49,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/destination" element={<Destination />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/places/manali" element={<ManaliBookingPage />} />
           <Route path="/places/goa" element={<GoaBookingPage />} />
           <Route path="/places/kashmir" element={<KashmirBookingPage />} />
