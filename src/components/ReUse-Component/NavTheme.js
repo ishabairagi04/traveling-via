@@ -64,36 +64,36 @@ const destinationThemes = {
 
   // ✅ Rajasthan Theme
   rajasthan: {
-    background: "rgba(255, 238, 179, 0.5)", 
-    text: "#4B2E2E",                       
-    highlight: "#FFC107",                   
-    hover: "#FFB300",                       
-    primary: "#D48806",                     
-    secondary: "#F9E79F",                   
-    accent: "#C68642"                       
+    background: "rgba(255, 238, 179, 0.5)", // pale sandy yellow
+    text: "#4B2E2E", // dark brown text
+    highlight: "#FFC107", // amber for highlights
+    hover: "#FFB300", // deeper amber on hover
+    primary: "#D48806", // warm orange
+    secondary: "#F9E79F", // soft yellow secondary
+    accent: "#C68642", // earthy brown accent
   },
 
   // ✅ Hyderabad Theme
   hyderabad: {
-    background: "rgba(255, 220, 220, 0.5)", 
-    text: "#5C1A1B",                       
-    highlight: "#FF6B6B",                   
-    hover: "#FF4C4C",                       
-    primary: "#E63946",                     
-    secondary: "#F8B4B4",                   
-    accent: "#FF9A76"                       
+    background: "rgba(255, 220, 220, 0.5)", // soft pinkish background
+    text: "#5C1A1B", // deep maroon text
+    highlight: "#FF6B6B", // vibrant red for highlights
+    hover: "#FF4C4C", // deeper red on hover
+    primary: "#E63946", // bold crimson primary
+    secondary: "#F8B4B4", // soft pink secondary
+    accent: "#FF9A76", // warm orange accent
   },
 
   // ✅ Ahmedabad Theme
   ahemdabad: {
-    background: "rgba(240, 255, 240, 0.6)", // soft green tint
-    text: "#14532d",                        // deep green text
-    highlight: "#22c55e",                   // emerald green for highlights
-    hover: "#16a34a",                       // darker green hover
-    primary: "#2E7D32",                     // forest green primary
-    secondary: "#BBF7D0",                   // mint green secondary
-    accent: "#65a30d"                       // lime accent
-  }
+    background: "rgba(255, 250, 230, 0.6)", // light sandstone beige
+    text: "#3E2723", // deep earthy brown
+    highlight: "#FF9800", // festive saffron orange
+    hover: "#F57C00", // darker saffron on hover
+    primary: "#BF360C", // rich terracotta
+    secondary: "#FFE082", // soft golden yellow
+    accent: "#D84315", // brick red accent
+  },
 };
 
 export default destinationThemes;

@@ -50,3 +50,51 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import { Drawer, List, ListItem, ListItemText } from "@mui/material";
+
+// export default function Sidebar({ setActivePage }) {
+//   return (
+//     <Drawer variant="permanent" anchor="left">
+//       <List>
+//         <ListItem button onClick={() => setActivePage("home")}>
+//           <ListItemText primary="Dashboard Home" />
+//         </ListItem>
+//         <ListItem button onClick={() => setActivePage("manageTours")}>
+//           <ListItemText primary="Manage Tours" />
+//         </ListItem>
+//         <ListItem button onClick={() => setActivePage("addTour")}>
+//           <ListItemText primary="Add Tour" />
+//         </ListItem>
+//       </List>
+//     </Drawer>
+//   );
+// }
