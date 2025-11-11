@@ -9,7 +9,7 @@ import {
 import Sidebar from "./Sidebar"; // keep your sidebar separate
 import DashboardHome from "./DashboardHome";
 import ManageTours from "./ManageTours";
-import AddTour from "./AddTour";
+import AddTour from "./Addtour";
 
 export default function Dashboard() {
   return (
