@@ -25,7 +25,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import AuthModal from "../LoginModal/AuthModal";
 import destinationThemes from "../ReUse-Component/NavTheme";
-import Dashboard from "../Dashboard/Dashboard";
+// import Dashboard from "../Dashboard/Dashboard";
 
 
 const Navbar = ({ theme = "default" }) => {
@@ -88,7 +88,7 @@ useEffect(() => {
     { label: "Gallery", path: "/gallery" },
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/contact" },
-    { label: "Dashboard", path: "/dashboard" },
+    // { label: "Dashboard", path: "/dashboard" },
   ];
 
   return (
