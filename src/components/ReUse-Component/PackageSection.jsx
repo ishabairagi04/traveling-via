@@ -55,7 +55,7 @@ const PackageSection = ({
                 onMouseEnter={(e) => (e.target.style.backgroundColor = theme.palette.secondary)}
                 onMouseLeave={(e) => (e.target.style.backgroundColor =theme.palette.accent)}
               >
-                {pkg.buttonLabel || "Book Now"}
+                {pkg.buttonLabel || "Enquire Now"}
               </button> */}
               <Button
   variant="contained"
@@ -68,7 +68,7 @@ const PackageSection = ({
     },
   }}
 >
-  {pkg.buttonLabel || "Book Now"}
+  {pkg.buttonLabel || "Enquire Now"}
 </Button>
 
             </Link>

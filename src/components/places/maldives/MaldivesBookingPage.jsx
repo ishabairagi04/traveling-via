@@ -49,7 +49,7 @@ const currentTheme = maldivesTheme.palette;
       img: '/maldives2.jpg',
       features: [FaWifi, FaHiking, FaUtensils],
       link: '/places/maldives/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

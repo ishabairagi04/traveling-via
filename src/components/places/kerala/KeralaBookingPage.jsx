@@ -45,7 +45,7 @@ const KeralaBookingPage = () => {
       img: '/kerala2.jpg',
       features: [FaHiking, FaSnowflake, FaWifi, FaUtensils],
       link: '/places/kerala/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

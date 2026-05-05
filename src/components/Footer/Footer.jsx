@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   Typography,
@@ -242,13 +242,13 @@ const colors = currentTheme;
                 <Stack direction="row" spacing={1.5} alignItems="center">
                   <FaPhoneAlt />
                   <Typography variant="body2" color={colors.subText}>
-                    088899 88015
+                    +91 88899-88015 / +91 83495-24500
                   </Typography>
                 </Stack>
                 <Stack direction="row" spacing={1.5} alignItems="center">
                   <FaEnvelope />
                   <Typography variant="body2" color={colors.subText}>
-                    example@exam.com
+                    info@viabhraman.com
                   </Typography>
                 </Stack>
               </Stack>

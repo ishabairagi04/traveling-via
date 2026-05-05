@@ -205,7 +205,7 @@ const TourBookingSidebar = ({
 
           onClick={onBook}
         >
-          Book Now
+          Enquire Now
         </Button>
 
         <Box mt={2} display="flex" alignItems="center" justifyContent="center" gap={1}>

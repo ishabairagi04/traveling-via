@@ -365,7 +365,7 @@ const TourPackages = () => {
                         },
                       }}
                     >
-                      BOOK NOW
+                      Enquire Now
                     </Button>
                   </Link>
                 </Box>

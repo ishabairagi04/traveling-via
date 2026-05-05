@@ -36,7 +36,7 @@ const UjjainBookingPage = () => {
       img: 'https://images.unsplash.com/photo-1584280740170-5517053a327d',
       features: [FaParking, FaWifi, FaUtensils],
       link: '/places/ujjain/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

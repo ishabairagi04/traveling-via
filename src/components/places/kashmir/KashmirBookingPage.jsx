@@ -31,7 +31,7 @@ const KashmirBookingPage = () => {
       img: '/manali3.jpg',
       features: [FaWifi, FaHiking, FaSnowflake, FaUtensils],
       link: '/places/kashmir/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     },
   ];
 

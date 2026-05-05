@@ -107,9 +107,9 @@ return (
     <div className="flex flex-col gap-6">
       <div className="bg-gray-100 p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-3">Contact Information</h2>
-        <p className="mb-2">📞 <strong>Phone:</strong> +91 98765 43210</p>
-        <p className="mb-2">📧 <strong>Email:</strong> contact@travelnow.com</p>
-        <p>📍 <strong>Address:</strong> 123 Dream Street, Indore, Madhya Pradesh</p>
+        <p className="mb-2">📞 <strong>Phone:</strong> +91 88899-88015/ +91 83495-24500</p>
+        <p className="mb-2">📧 <strong>Email:</strong> info@viabhraman.com</p>
+        <p>📍 <strong>Address:</strong> Vikram Tower, 249, Sapna Sangeeta Rd, Old Agarwal Nagar, Indore, Madhya Pradesh 452001</p>
       </div>
 
       <div className="rounded-lg overflow-hidden shadow-md">

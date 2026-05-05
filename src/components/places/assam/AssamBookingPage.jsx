@@ -39,7 +39,7 @@ const AssamBookingPage = () => {
       img: '/assam2.jpg',
       features: [FaHiking, FaSnowflake, FaWifi, FaUtensils],
       link: '/places/assam/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

@@ -29,7 +29,7 @@ const GoaBookingPage = () => {
       img: '/goa2.jpeg',
       features: [FaWifi, FaSwimmer, FaParking, FaUtensils],
       link: '/places/goa/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

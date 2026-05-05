@@ -52,7 +52,7 @@ const ManaliBookingPage = () => {
       img: '/manali3.jpg',
       features: [FaWifi, FaHiking, FaSnowflake, FaUtensils],
       link: '/places/manali/tour',
-      buttonLabel: 'Book Now',
+      buttonLabel: 'Enquire Now',
     }
   ];
 

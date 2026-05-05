@@ -149,7 +149,7 @@ export default function Destination() {
           gutterBottom
           sx={{ fontSize: { xs: '1.8rem', md: '2.5rem' } }}
         >
-          Explore our exclusive, otherworldly retreats
+          Explore our exclusive, other worldly retreats
         </Typography>
         <Typography
           variant="body1"

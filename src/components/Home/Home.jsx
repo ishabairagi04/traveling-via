@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Parallax } from 'react-parallax';
 
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
@@ -42,80 +42,7 @@ const packages = [
   },
 ];
 
-const bestSellingTours = [
-  {
-    id: 1,
-    image: "/img-01.webp",
-    title: "Interlaken Winter – Meet Us There",
-    location: "Switzerland",
-    price: "$315.00",
-    people: 20,
-    days: 2,
-  },
-  {
-    id: 2,
-    image: "/img-02.webp",
-    title: "GoldenPass Express from Montreux",
-    location: "Switzerland",
-    price: "$616.00",
-    people: 20,
-    days: 2,
-  },
-  {
-    id: 3,
-    image: "/img-03.webp",
-    title: "Isle Of Skye & The Highlands",
-    location: "Scotland",
-    price: "$326.00",
-    people: 20,
-    days: 2,
-  },
-  {
-    id: 4,
-    image: "/img-01.webp",
-    title: "Lake District From Edinburgh, UK",
-    location: "UK",
-    price: "$581.00",
-    people: 18,
-    days: 3,
-  },
-  {
-    id: 5,
-    image: "/img-02.webp",
-    title: "Safari Adventure in Kenya",
-    location: "Kenya",
-    price: "$749.00",
-    people: 16,
-    days: 5,
-  },
-  {
-    id: 6,
-    image: "/img-03.webp",
-    title: "Discover Iceland",
-    location: "Iceland",
-    price: "$900.00",
-    people: 12,
-    days: 4,
-  },
-  {
-    id: 7,
-    image: "/img-01.webp",
-    title: "Northern Lights Explorer",
-    location: "Norway",
-    price: "$890.00",
-    people: 15,
-    days: 3,
-  },
-  {
-    id: 8,
-    image: "/img-02.webp",
-    title: "Great Barrier Reef Snorkel",
-    location: "Australia",
-    price: "$770.00",
-    people: 10,
-    days: 2,
-  },
-];
+
 
 const destinations = [
   {
@@ -150,29 +77,7 @@ const destinations = [
   },
 ];
 
-const articles = [
-  {
-    id: 1,
-    title: "Top 10 Must-Visit Travel Destinations for Adventure...",
-    date: "20 Dec,2024",
-    image: "/slide-03.webp",
-    tag: "Accommodation",
-  },
-  {
-    id: 2,
-    title: "Tour Highlights: Discover the Best Sights and Experiences",
-    date: "20 Dec,2024",
-    image: "/slide-03.webp",
-    tag: "Accommodation",
-  },
-  {
-    id: 3,
-    title: "Camping Essentials: What You Need for an Unforgettable...",
-    date: "20 Dec,2024",
-    image: "/slide-03.webp",
-    tag: "Accommodation",
-  },
-];
+
 const Home = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [location, setLocation] = useState("");
@@ -183,7 +88,7 @@ const Home = () => {
 const navigate = useNavigate();
 
   const cardContainerRef = useRef(null);
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0.7]);
   const scale = useTransform(scrollY, [0, 300], [1, 1.05]);
 
@@ -405,81 +310,7 @@ const navigate = useNavigate();
       </section>
 
       {/* === Frame 5 === */}
-      <section className=" py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-3">Our best-selling tours</h2>
-          <p className="text-center text-gray-500 mb-10">
-            Explore the tours chosen and recommended by a multitude of travelers.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {bestSellingTours.map((tour) => (
-              <div
-                key={tour.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
-              >
-                {/* Image + Icons */}
-                <div className="relative">
-                  <img
-                    src={tour.image}
-                    alt={tour.title}
-                    className="h-48 w-full object-cover"
-                  />
-
-                  {/* Top Left Badges */}
-                  <div className="absolute top-2 left-2 flex items-center gap-2">
-                    <span className="bg-[#1976d2] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      Featured
-                    </span>
-                    <span className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                      <FaCamera className="text-sm" /> 5
-                    </span>
-                    <span className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full flex items-center">
-                      <FaVideo className="text-sm" />
-                    </span>
-                  </div>
-
-                  {/* Top Right Heart */}
-                  <div className="absolute top-2 right-2">
-                    <button className="bg-white rounded-full p-2 shadow hover:text-red-500 transition">
-                      <FaHeart className="text-gray-700 text-sm" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Card Body */}
-                <div className="p-4 flex flex-col flex-1 justify-between">
-                  {/* Rating */}
-                  <div className="flex items-center text-blue-600 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <IoIosStar key={i} />
-                    ))}
-                    <span className="text-sm text-gray-500 ml-1">(1 Rating)</span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-bold text-lg mb-2 leading-snug">{tour.title}</h3>
-
-                  {/* People & Days */}
-                  <div className="flex justify-start items-center text-sm text-gray-600 gap-6">
-                    <div className="flex items-center gap-1">👥 {tour.people} People</div>
-                    <div className="flex items-center gap-1">📅 {tour.days} Days</div>
-                  </div>
-
-                  {/* Divider */}
-                  <hr className="my-3" />
-
-                  {/* Location & Price */}
-                  <div className="flex justify-between items-center text-sm text-gray-600">
-                    <div className="flex items-center gap-1">📍 {tour.location}</div>
-                    <div className="text-blue-600 font-bold text-lg">{tour.price}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
       {/*frame 6*/}
       {/* === Why Choose Via Brahman === */}
       <section className="bg-[#1976d2] w-3000px bg-opacity-30 py-16 px-4 ml-[-45px] mr-[-40px] ">
@@ -588,45 +419,7 @@ const navigate = useNavigate();
         </div>
       </section>
 
-      {/* === Frame 8: Latest Articles === */}
-      <section className="py-20 ">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-2">Latest news & articles</h2>
-          <p className="text-center text-gray-500 mb-10">
-            Tips & insights we collected through the years.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {articles.map((article) => (
-              <div
-                key={article.id}
-                className="relative rounded-xl overflow-hidden shadow-md group"
-              >
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-80 object-cover"
-                />
-
-                {/* Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white">
-                  <span className="bg-blue-600  text-xs font-bold px-3 py-1 rounded-full">
-                    {article.tag}
-                  </span>
-
-                  <div className="flex items-center text-sm mt-3 mb-2">
-                    <FaClock className="mr-2" />
-                    {article.date}
-                  </div>
-
-                  <h4 className="font-bold text-md leading-snug mb-2">{article.title}</h4>
-                  <button className="text-sm underline hover:text-blue-500">Read More</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
       <Footer theme="manali"/>
     </section>
   );

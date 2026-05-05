@@ -184,7 +184,7 @@ export default function TravelInfoSection() {
             fontFamily: "'Poppins', sans-serif",
           }}
         >
-          Booking Number
+          Enquiry Number
         </Typography>
         <Typography
           sx={{
@@ -194,7 +194,7 @@ export default function TravelInfoSection() {
             color: ORANGE,
           }}
         >
-          (229) 555–0109
+          +91 83495-24500
         </Typography>
       </Box>
     </Stack>
@@ -202,7 +202,7 @@ export default function TravelInfoSection() {
     <Button
       variant="contained"
       sx={{
-        backgroundColor: blue,
+        backgroundColor: "blue",
         px: 3,
         py: 1.5,
         borderRadius: 2,
@@ -216,7 +216,7 @@ export default function TravelInfoSection() {
         },
       }}
     >
-      Booking Now
+      Enquire Now
     </Button>
   </Stack>
 </Grid>
